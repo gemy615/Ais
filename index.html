@@ -2,994 +2,527 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>اختبار اختيار من متعدد - نظم المعلومات المحاسبية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>الإدارة الحكومية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0A0F0D;
-    --card: #111916;
-    --border: #1e2e24;
-    --orange: #E8820C;
-    --orange-dim: rgba(232,130,12,0.12);
-    --green: #2D9E5F;
-    --green-dim: rgba(45,158,95,0.12);
-    --red: #E84444;
-    --red-dim: rgba(232,68,68,0.12);
-    --blue: #3a8fd4;
-    --blue-dim: rgba(58,143,212,0.12);
-    --text: #e8f0eb;
-    --muted: #7a9485;
-    --white: #ffffff;
-  }
+:root{
+  --bg:#0A0F0D;--card:#111916;--border:#1e2e24;
+  --orange:#E8820C;--od:rgba(232,130,12,0.13);
+  --green:#2D9E5F;--gd:rgba(45,158,95,0.13);
+  --red:#E84444;--rd:rgba(232,68,68,0.13);
+  --blue:#3a8fd4;--bd:rgba(58,143,212,0.13);
+  --text:#e8f0eb;--muted:#7a9485;--white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;overflow-x:hidden;}
+button{cursor:pointer;touch-action:manipulation;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;-webkit-appearance:none;appearance:none;}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.pt{position:absolute;border-radius:50%;opacity:0;animation:fu linear infinite;}
+@keyframes fu{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:.25;}90%{opacity:.06;}100%{transform:translateY(-10vh) scale(1.5);opacity:0;}}
 
-  body {
-    font-family: 'Cairo', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+.scr{position:relative;z-index:1;display:none;min-height:100vh;padding:28px 16px 56px;animation:fi .4s ease;}
+.scr.on{display:flex;flex-direction:column;align-items:center;}
+@keyframes fi{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes si{from{opacity:0;transform:translateX(40px);}to{opacity:1;transform:translateX(0);}}
+@keyframes sb{from{opacity:0;transform:translateX(-40px);}to{opacity:1;transform:translateX(0);}}
+@keyframes pk{0%{transform:scale(1);}50%{transform:scale(1.04);}100%{transform:scale(1);}}
+@keyframes sh{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+@keyframes sp{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+@keyframes cf{to{transform:translateY(110vh) rotate(720deg);opacity:0;}}
+@keyframes pr{0%,100%{box-shadow:0 0 28px rgba(232,130,12,.28);}50%{box-shadow:0 0 55px rgba(232,130,12,.55);}}
 
-  /* ─── PARTICLES ─── */
-  #particles {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    overflow: hidden;
-  }
-  .particle {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0;
-    animation: float-up linear infinite;
-  }
-  @keyframes float-up {
-    0%   { transform: translateY(100vh) scale(0); opacity: 0; }
-    10%  { opacity: 0.35; }
-    90%  { opacity: 0.08; }
-    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
-  }
+/* WELCOME */
+#sw{justify-content:center;text-align:center;gap:24px;}
+.logo{width:116px;height:116px;border-radius:50%;border:3px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:50px;background:var(--od);animation:pr 2.2s ease-in-out infinite;}
+.wtitle{font-size:23px;font-weight:900;line-height:1.35;background:linear-gradient(135deg,var(--orange),#f0a94a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.wsub{font-size:14px;color:var(--muted);line-height:1.8;}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.chip{background:var(--card);border:1px solid var(--border);border-radius:50px;padding:9px 18px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;}
+.chip b{color:var(--orange);font-size:16px;}
+.sbx{width:100%;max-width:340px;display:flex;flex-direction:column;gap:14px;}
+.mstd{width:100%;padding:18px;border-radius:16px;background:var(--bd);border:2px solid var(--blue);color:var(--blue);font-family:'Cairo',sans-serif;font-size:17px;font-weight:900;}
+.mexm{width:100%;padding:18px;border-radius:16px;background:linear-gradient(135deg,var(--orange),#f0a94a);border:none;color:#000;font-family:'Cairo',sans-serif;font-size:17px;font-weight:900;box-shadow:0 8px 28px rgba(232,130,12,.38);}
 
-  /* ─── SCREENS ─── */
-  .screen {
-    position: relative; z-index: 1;
-    display: none;
-    min-height: 100vh;
-    padding: 24px 16px 40px;
-    animation: fadeIn 0.45s ease;
-  }
-  .screen.active { display: flex; flex-direction: column; align-items: center; }
+/* STUDY */
+#ss{justify-content:flex-start;gap:18px;max-width:600px;width:100%;margin:0 auto;}
+.shdr{width:100%;display:flex;align-items:center;justify-content:space-between;}
+.qcnt{font-size:13px;color:var(--muted);font-weight:600;}
+.qcnt strong{color:var(--orange);font-size:18px;}
+.mbadge{border-radius:50px;padding:6px 14px;font-size:12px;font-weight:700;background:var(--bd);border:1px solid var(--blue);color:var(--blue);}
+.pwrap{width:100%;background:var(--border);border-radius:100px;height:6px;overflow:hidden;}
+.pbar{height:100%;background:linear-gradient(90deg,var(--orange),#f0a94a);border-radius:100px;transition:width .4s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(232,130,12,.5);}
+.scard{width:100%;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;}
+.scard.ai{animation:si .38s cubic-bezier(.4,0,.2,1);}
+.scard.ab{animation:sb .38s cubic-bezier(.4,0,.2,1);}
+.slbl{font-size:11px;color:var(--blue);font-weight:700;letter-spacing:1px;margin-bottom:10px;}
+.sqtxt{font-size:16px;font-weight:800;color:var(--white);line-height:1.65;margin-bottom:18px;}
+.sdiv{width:100%;height:1px;background:var(--border);margin-bottom:16px;}
+.salbl{font-size:11px;color:var(--green);font-weight:700;letter-spacing:1px;margin-bottom:10px;}
+.sans{font-size:14px;color:var(--text);line-height:1.9;}
+.schoices{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+.scrow{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;border:1px solid var(--border);font-size:14px;}
+.scrow.ok{border-color:var(--green);background:var(--gd);color:var(--green);font-weight:700;}
+.scrow.no{color:var(--muted);}
+.sclet{min-width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;}
+.sclet.ok{background:var(--green);color:#fff;}
+.sclet.no{background:var(--border);color:var(--muted);}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+.navrow{width:100%;display:flex;gap:10px;}
+.prevbtn{background:var(--card);border:2px solid var(--muted);color:var(--muted);font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;border-radius:14px;padding:15px 18px;display:none;white-space:nowrap;}
+.prevbtn.on{display:block;}
+.nxtsbtn{flex:1;background:var(--card);border:2px solid var(--blue);color:var(--blue);font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;border-radius:14px;padding:15px;}
+.startbtn{width:100%;background:linear-gradient(135deg,var(--orange),#f0a94a);border:none;color:#000;font-family:'Cairo',sans-serif;font-size:16px;font-weight:900;border-radius:14px;padding:16px;box-shadow:0 6px 22px rgba(232,130,12,.35);display:none;}
+.startbtn.on{display:block;animation:fi .4s ease;}
+.homebtn{margin-top:8px;width:100%;background:transparent;border:1px solid var(--border);color:var(--muted);font-family:'Cairo',sans-serif;font-size:13px;border-radius:12px;padding:11px;}
 
-  /* ══ WELCOME ══ */
-  #screen-welcome {
-    justify-content: center;
-    text-align: center;
-    gap: 26px;
-  }
-  .logo-ring {
-    width: 116px; height: 116px;
-    border-radius: 50%;
-    border: 3px solid var(--orange);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 52px;
-    background: var(--orange-dim);
-    animation: pulse-ring 2.2s ease-in-out infinite;
-    box-shadow: 0 0 40px rgba(232,130,12,0.28);
-  }
-  @keyframes pulse-ring {
-    0%,100% { box-shadow: 0 0 28px rgba(232,130,12,0.28); }
-    50%      { box-shadow: 0 0 60px rgba(232,130,12,0.5); }
-  }
-  .welcome-title {
-    font-size: 25px; font-weight: 900; line-height: 1.35;
-    background: linear-gradient(135deg, var(--orange), #f0a94a);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .welcome-sub { font-size: 14px; color: var(--muted); line-height: 1.75; }
-  .stats-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .stat-chip {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 14px; font-weight: 700;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .stat-chip span { color: var(--orange); font-size: 18px; }
-  .btn-start {
-    background: linear-gradient(135deg, var(--orange), #f0a94a);
-    color: #000; font-family: 'Cairo', sans-serif;
-    font-size: 18px; font-weight: 900;
-    border: none; border-radius: 16px;
-    padding: 18px 48px; cursor: pointer;
-    width: 100%; max-width: 320px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 8px 30px rgba(232,130,12,0.4);
-  }
-  .btn-start:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(232,130,12,0.5); }
-  .btn-start:active { transform: translateY(0); }
+/* EXAM */
+#se{justify-content:flex-start;gap:18px;max-width:600px;width:100%;margin:0 auto;}
+.ehdr{width:100%;display:flex;align-items:center;justify-content:space-between;}
+.scbadge{background:var(--gd);border:1px solid var(--green);border-radius:50px;padding:6px 14px;font-size:13px;color:var(--green);font-weight:700;}
+.qcard{width:100%;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;}
+.qcard.ai{animation:si .38s cubic-bezier(.4,0,.2,1);}
+.qcard.ab{animation:sb .38s cubic-bezier(.4,0,.2,1);}
+.qlbl{font-size:11px;color:var(--orange);font-weight:700;letter-spacing:1px;margin-bottom:10px;}
+.qtxt{font-size:15px;font-weight:700;line-height:1.7;color:var(--white);}
 
-  /* ══ QUIZ ══ */
-  #screen-quiz {
-    justify-content: flex-start;
-    gap: 18px;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
-  }
+.choices{width:100%;display:flex;flex-direction:column;gap:10px;}
+.cbtn{width:100%;background:var(--card);border:2px solid var(--border);border-radius:14px;padding:15px 16px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:12px;text-align:right;}
+.clet{min-width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;background:var(--border);color:var(--muted);flex-shrink:0;transition:background .2s,color .2s;}
+.cbtn.ok{border-color:var(--green);background:var(--gd);animation:pk .38s cubic-bezier(.4,0,.2,1);}
+.cbtn.ok .clet{background:var(--green);color:#fff;}
+.cbtn.no{border-color:var(--red);background:var(--rd);animation:sh .38s ease;}
+.cbtn.no .clet{background:var(--red);color:#fff;}
+.cbtn.dim{opacity:.34;}
+.cbtn:disabled{cursor:default;}
 
-  .quiz-header {
-    width: 100%;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .q-counter { font-size: 13px; color: var(--muted); font-weight: 600; }
-  .q-counter strong { color: var(--orange); font-size: 18px; }
-  .score-badge {
-    background: var(--green-dim);
-    border: 1px solid var(--green);
-    border-radius: 50px;
-    padding: 6px 14px;
-    font-size: 13px; color: var(--green); font-weight: 700;
-  }
+.fbbox{width:100%;border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.7;display:none;animation:fi .3s ease;}
+.fbbox.on{display:block;}
+.cfb{background:var(--gd);border:1px solid var(--green);color:var(--green);}
+.wfb{background:var(--rd);border:1px solid var(--red);color:#ff8888;}
+.fbtitle{font-weight:900;font-size:15px;margin-bottom:5px;}
 
-  .progress-wrap {
-    width: 100%; background: var(--border);
-    border-radius: 100px; height: 6px; overflow: hidden;
-  }
-  .progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--orange), #f0a94a);
-    border-radius: 100px;
-    transition: width 0.4s cubic-bezier(.4,0,.2,1);
-    box-shadow: 0 0 10px rgba(232,130,12,0.5);
-  }
+.nxtebtn{flex:1;background:var(--card);border:2px solid var(--orange);color:var(--orange);font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;border-radius:14px;padding:15px;display:none;}
+.nxtebtn.on{display:block;animation:fi .3s ease;}
 
-  /* question card */
-  .q-card {
-    width: 100%;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 22px;
-    animation: slideIn 0.4s cubic-bezier(.4,0,.2,1);
-  }
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(40px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-  @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(-40px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-  .q-label {
-    font-size: 11px; color: var(--orange); font-weight: 700;
-    letter-spacing: 1px; margin-bottom: 10px;
-  }
-  .q-text { font-size: 16px; font-weight: 700; line-height: 1.7; color: var(--white); }
+/* RESULT */
+#sr{justify-content:flex-start;gap:22px;max-width:560px;width:100%;margin:0 auto;padding-top:36px;}
+.rcircle{width:144px;height:144px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;animation:sp .6s cubic-bezier(.4,0,.2,1);}
+.rcircle::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--c1) var(--pct),var(--border) 0);z-index:-1;}
+.rcircle::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--card);z-index:-1;}
+.rplbl{font-size:12px;color:var(--muted);margin-top:2px;}
+.rmsg{text-align:center;}
+.rmsg h2{font-size:22px;font-weight:900;margin-bottom:8px;}
+.rmsg p{font-size:14px;color:var(--muted);}
+.rstats{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rsc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;text-align:center;}
+.rsn{font-size:28px;font-weight:900;}
+.rsl{font-size:12px;color:var(--muted);margin-top:4px;}
+.rbtns{width:100%;display:flex;flex-direction:column;gap:12px;}
+.revbtn{width:100%;background:var(--rd);border:2px solid var(--red);color:#ff8888;font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;border-radius:14px;padding:16px;}
+.rstbtn{width:100%;background:linear-gradient(135deg,var(--orange),#f0a94a);border:none;color:#000;font-family:'Cairo',sans-serif;font-size:16px;font-weight:900;border-radius:14px;padding:16px;box-shadow:0 6px 22px rgba(232,130,12,.35);}
+.hmebtn{width:100%;background:var(--card);border:2px solid var(--blue);color:var(--blue);font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;border-radius:14px;padding:15px;}
 
-  /* choices */
-  .choices { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+/* REVIEW */
+#sv{justify-content:flex-start;gap:14px;max-width:600px;width:100%;margin:0 auto;}
+.vhdr{width:100%;display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.vtitle{font-size:18px;font-weight:900;color:var(--red);}
+.vcnt{background:var(--rd);border:1px solid var(--red);border-radius:50px;padding:4px 12px;font-size:13px;color:#ff8888;font-weight:700;}
+.vitm{width:100%;background:var(--card);border:1px solid var(--border);border-right:4px solid var(--red);border-radius:16px;padding:18px;animation:fi .3s ease;}
+.vnum{font-size:11px;color:var(--red);font-weight:700;letter-spacing:1px;margin-bottom:8px;}
+.vqtxt{font-size:14px;font-weight:700;color:var(--white);line-height:1.6;margin-bottom:12px;}
+.vrow{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+.vtag{min-width:62px;text-align:center;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700;}
+.twrong{background:var(--rd);color:var(--red);border:1px solid var(--red);}
+.tcor{background:var(--gd);color:var(--green);border:1px solid var(--green);}
+.vans{font-size:13px;color:var(--muted);line-height:1.6;}
+.bkbtn{width:100%;background:var(--card);border:2px solid var(--green);color:var(--green);font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;border-radius:14px;padding:16px;margin-top:6px;}
 
-  .choice-btn {
-    width: 100%;
-    background: var(--card);
-    border: 2px solid var(--border);
-    border-radius: 14px;
-    padding: 14px 16px;
-    font-family: 'Cairo', sans-serif;
-    font-size: 15px; font-weight: 600;
-    color: var(--text);
-    cursor: pointer;
-    display: flex; align-items: center; gap: 12px;
-    transition: all 0.22s;
-    text-align: right;
-  }
-  .choice-letter {
-    min-width: 34px; height: 34px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 900;
-    background: var(--border);
-    color: var(--muted);
-    transition: all 0.22s;
-    flex-shrink: 0;
-  }
-  .choice-btn:hover:not(:disabled) {
-    border-color: var(--orange);
-    background: var(--orange-dim);
-    transform: translateX(-3px);
-  }
-  .choice-btn:hover:not(:disabled) .choice-letter {
-    background: var(--orange); color: #000;
-  }
-
-  /* states */
-  .choice-btn.correct {
-    border-color: var(--green);
-    background: var(--green-dim);
-    animation: popIn 0.4s cubic-bezier(.4,0,.2,1);
-  }
-  .choice-btn.correct .choice-letter { background: var(--green); color: #fff; }
-
-  .choice-btn.wrong {
-    border-color: var(--red);
-    background: var(--red-dim);
-    animation: shake 0.4s ease;
-  }
-  .choice-btn.wrong .choice-letter { background: var(--red); color: #fff; }
-
-  .choice-btn.dim { opacity: 0.38; }
-
-  @keyframes popIn {
-    0%  { transform: scale(1); }
-    50% { transform: scale(1.03); }
-    100%{ transform: scale(1); }
-  }
-  @keyframes shake {
-    0%,100% { transform: translateX(0); }
-    25%      { transform: translateX(-7px); }
-    75%      { transform: translateX(7px); }
-  }
-
-  /* feedback */
-  .feedback-box {
-    width: 100%;
-    border-radius: 14px;
-    padding: 14px 16px;
-    font-size: 14px; line-height: 1.7;
-    display: none;
-    animation: fadeIn 0.3s ease;
-  }
-  .feedback-box.show { display: block; }
-  .feedback-box.correct-fb { background: var(--green-dim); border: 1px solid var(--green); color: var(--green); }
-  .feedback-box.wrong-fb   { background: var(--red-dim);   border: 1px solid var(--red);   color: #ff8888; }
-  .feedback-title { font-weight: 900; font-size: 15px; margin-bottom: 5px; }
-
-  /* nav buttons */
-  .nav-row { width: 100%; display: flex; gap: 10px; }
-
-  .btn-prev {
-    background: var(--card);
-    border: 2px solid var(--muted);
-    color: var(--muted);
-    font-family: 'Cairo', sans-serif;
-    font-size: 15px; font-weight: 700;
-    border-radius: 14px;
-    padding: 15px 18px;
-    cursor: pointer;
-    display: none;
-    transition: all 0.22s;
-    white-space: nowrap;
-  }
-  .btn-prev.show { display: block; }
-  .btn-prev:hover { border-color: var(--text); color: var(--text); }
-
-  .btn-next {
-    flex: 1;
-    background: var(--card);
-    border: 2px solid var(--orange);
-    color: var(--orange);
-    font-family: 'Cairo', sans-serif;
-    font-size: 16px; font-weight: 700;
-    border-radius: 14px;
-    padding: 15px;
-    cursor: pointer;
-    display: none;
-    transition: all 0.22s;
-  }
-  .btn-next.show { display: block; animation: fadeIn 0.3s ease; }
-  .btn-next:hover { background: var(--orange); color: #000; }
-
-  /* ══ RESULT ══ */
-  #screen-result {
-    justify-content: flex-start;
-    gap: 22px;
-    max-width: 560px;
-    width: 100%;
-    margin: 0 auto;
-    padding-top: 36px;
-  }
-  .result-circle {
-    width: 144px; height: 144px;
-    border-radius: 50%;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    font-size: 34px; font-weight: 900;
-    position: relative;
-    animation: scalePop 0.6s cubic-bezier(.4,0,.2,1);
-  }
-  @keyframes scalePop {
-    from { transform: scale(0); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-  .result-circle::before {
-    content: '';
-    position: absolute; inset: -4px;
-    border-radius: 50%;
-    background: conic-gradient(var(--c1) var(--pct), var(--border) 0);
-    z-index: -1;
-  }
-  .result-circle::after {
-    content: '';
-    position: absolute; inset: 0;
-    border-radius: 50%;
-    background: var(--card);
-    z-index: -1;
-  }
-  .result-pct-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-  .result-msg { text-align: center; }
-  .result-msg h2 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
-  .result-msg p  { font-size: 14px; color: var(--muted); }
-
-  .result-stats {
-    width: 100%;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-  }
-  .rs-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 18px; text-align: center;
-  }
-  .rs-num   { font-size: 28px; font-weight: 900; }
-  .rs-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
-
-  .result-btns { width: 100%; display: flex; flex-direction: column; gap: 12px; }
-  .btn-review {
-    width: 100%;
-    background: var(--red-dim);
-    border: 2px solid var(--red);
-    color: #ff8888;
-    font-family: 'Cairo', sans-serif;
-    font-size: 16px; font-weight: 700;
-    border-radius: 14px; padding: 16px;
-    cursor: pointer; transition: all 0.22s;
-  }
-  .btn-review:hover { background: var(--red); color: #fff; }
-  .btn-restart {
-    width: 100%;
-    background: linear-gradient(135deg, var(--orange), #f0a94a);
-    border: none; color: #000;
-    font-family: 'Cairo', sans-serif;
-    font-size: 16px; font-weight: 900;
-    border-radius: 14px; padding: 16px;
-    cursor: pointer; transition: all 0.22s;
-    box-shadow: 0 6px 24px rgba(232,130,12,0.35);
-  }
-  .btn-restart:hover { transform: translateY(-2px); }
-
-  /* ══ REVIEW ══ */
-  #screen-review {
-    justify-content: flex-start;
-    gap: 14px;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
-  }
-  .review-header {
-    width: 100%;
-    display: flex; align-items: center; justify-content: space-between;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .review-title { font-size: 18px; font-weight: 900; color: var(--red); }
-  .review-count {
-    background: var(--red-dim); border: 1px solid var(--red);
-    border-radius: 50px; padding: 4px 12px;
-    font-size: 13px; color: #ff8888; font-weight: 700;
-  }
-  .review-item {
-    width: 100%;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-right: 4px solid var(--red);
-    border-radius: 16px;
-    padding: 18px;
-    animation: fadeIn 0.3s ease;
-  }
-  .review-q-num { font-size: 11px; color: var(--red); font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
-  .review-q-text { font-size: 15px; font-weight: 700; color: var(--white); line-height: 1.6; margin-bottom: 14px; }
-  .review-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
-  .review-tag {
-    min-width: 62px; text-align: center;
-    border-radius: 6px; padding: 3px 8px;
-    font-size: 12px; font-weight: 700;
-  }
-  .tag-wrong   { background: var(--red-dim);   color: var(--red);   border: 1px solid var(--red); }
-  .tag-correct { background: var(--green-dim); color: var(--green); border: 1px solid var(--green); }
-  .review-answer-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-  .btn-back {
-    width: 100%;
-    background: var(--card);
-    border: 2px solid var(--green);
-    color: var(--green);
-    font-family: 'Cairo', sans-serif;
-    font-size: 16px; font-weight: 700;
-    border-radius: 14px; padding: 16px;
-    cursor: pointer; transition: all 0.22s;
-    margin-top: 6px;
-  }
-  .btn-back:hover { background: var(--green); color: #000; }
-
-  /* confetti */
-  .confetti-piece {
-    position: fixed; width: 8px; height: 14px;
-    border-radius: 2px; top: -20px;
-    animation: confetti-fall 3s ease-in forwards;
-    z-index: 999; pointer-events: none;
-  }
-  @keyframes confetti-fall {
-    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-  }
+.cpiece{position:fixed;width:8px;height:14px;border-radius:2px;top:-20px;animation:cf 3s ease-in forwards;z-index:999;pointer-events:none;}
 </style>
 </head>
 <body>
-
 <div id="particles"></div>
 
-<!-- ══ WELCOME ══ -->
-<div id="screen-welcome" class="screen active">
-  <div class="logo-ring">📝</div>
-  <div>
-    <div class="welcome-title">اختبار اختيار من متعدد<br>نظم المعلومات المحاسبية</div>
+<!-- WELCOME -->
+<div id="sw" class="scr on">
+  <div class="logo">🏛️</div>
+  <div><div class="wtitle">الإدارة الحكومية<br>التخطيط والتنظيم</div></div>
+  <div class="wsub">أسئلة شاملة في الإدارة الحكومية والتخطيط والتنظيم</div>
+  <div class="chips">
+    <div class="chip"><b>99</b> سؤال اختيار</div>
   </div>
-  <div class="welcome-sub">
-    223 سؤال اختيار من متعدد<br>
-    اختار الإجابة الصحيحة واعرف نتيجتك!
-  </div>
-  <div class="stats-row">
-    <div class="stat-chip"><span>223</span> سؤال</div>
-    <div class="stat-chip">🎯 اختيار من متعدد</div>
-  </div>
-  <button class="btn-start" onclick="startQuiz()">🚀 ابدأ الاختبار</button>
-</div>
-
-<!-- ══ QUIZ ══ -->
-<div id="screen-quiz" class="screen">
-  <div class="quiz-header" style="width:100%">
-    <div class="q-counter">سؤال <strong id="q-num">1</strong> / <span id="q-total">223</span></div>
-    <div class="score-badge">✅ <span id="live-score">0</span></div>
-  </div>
-  <div class="progress-wrap" style="width:100%">
-    <div class="progress-bar" id="progress-bar" style="width:0%"></div>
-  </div>
-  <div class="q-card" id="q-card">
-    <div class="q-label">📝 اختر الإجابة الصحيحة</div>
-    <div class="q-text" id="q-text"></div>
-  </div>
-  <div class="choices" id="choices"></div>
-  <div class="feedback-box" id="feedback"></div>
-  <div class="nav-row">
-    <button class="btn-prev" id="btn-prev" onclick="prevQuestion()">→ السابق</button>
-    <button class="btn-next" id="btn-next" onclick="nextQuestion()">التالي ←</button>
+  <div class="sbx">
+    <button class="mstd" id="btn-study">📖 ذاكر الاختبار</button>
+    <button class="mexm" id="btn-exam">🚀 ابدأ الاختبار</button>
   </div>
 </div>
 
-<!-- ══ RESULT ══ -->
-<div id="screen-result" class="screen">
-  <div class="result-circle" id="result-circle">
-    <div id="result-pct-num" style="font-size:32px;font-weight:900">0%</div>
-    <div class="result-pct-label">النتيجة</div>
+<!-- STUDY -->
+<div id="ss" class="scr">
+  <div class="shdr" style="width:100%">
+    <div class="qcnt">سؤال <strong id="snum">1</strong> / <span id="stot">99</span></div>
+    <div class="mbadge">📖 مذاكرة</div>
   </div>
-  <div class="result-msg">
-    <h2 id="result-emoji-msg">💪 أحسنت!</h2>
-    <p id="result-sub">استمر في المراجعة</p>
+  <div class="pwrap" style="width:100%"><div class="pbar" id="spbar" style="width:0%"></div></div>
+  <div class="scard ai" id="scard">
+    <div class="slbl">❓ السؤال</div>
+    <div class="sqtxt" id="sqtxt"></div>
+    <div class="sdiv"></div>
+    <div class="salbl">✅ الإجابة</div>
+    <div class="sans" id="sans"></div>
   </div>
-  <div class="result-stats">
-    <div class="rs-card">
-      <div class="rs-num" id="res-correct" style="color:var(--green)">0</div>
-      <div class="rs-label">✅ إجابات صحيحة</div>
-    </div>
-    <div class="rs-card">
-      <div class="rs-num" id="res-wrong" style="color:var(--red)">0</div>
-      <div class="rs-label">❌ إجابات خاطئة</div>
-    </div>
-    <div class="rs-card" style="grid-column:1/-1">
-      <div class="rs-num" id="res-total" style="color:var(--orange)">0</div>
-      <div class="rs-label">📋 إجمالي الأسئلة</div>
-    </div>
+  <div class="navrow">
+    <button class="prevbtn" id="s-prev">→ السابق</button>
+    <button class="nxtsbtn" id="s-next">التالي ←</button>
   </div>
-  <div class="result-btns">
-    <button class="btn-review" id="btn-review-wrap" onclick="showReview()">📖 راجع الأسئلة الغلط</button>
-    <button class="btn-restart" onclick="restartQuiz()">🔄 ابدأ من جديد</button>
+  <button class="startbtn" id="s-start">🚀 ابدأ الاختبار</button>
+  <button class="homebtn" id="s-home">← القائمة الرئيسية</button>
+</div>
+
+<!-- EXAM -->
+<div id="se" class="scr">
+  <div class="ehdr" style="width:100%">
+    <div class="qcnt">سؤال <strong id="enum">1</strong> / <span id="etot">99</span></div>
+    <div class="scbadge">✅ <span id="escore">0</span></div>
+  </div>
+  <div class="pwrap" style="width:100%"><div class="pbar" id="epbar" style="width:0%"></div></div>
+  <div class="qcard ai" id="qcard">
+    <div class="qlbl">📝 اختر الإجابة الصحيحة</div>
+    <div class="qtxt" id="eqtxt"></div>
+  </div>
+  <div id="eans"></div>
+  <div class="fbbox" id="efb"></div>
+  <div class="navrow">
+    <button class="prevbtn" id="e-prev">→ السابق</button>
+    <button class="nxtebtn" id="e-next">التالي ←</button>
   </div>
 </div>
 
-<!-- ══ REVIEW ══ -->
-<div id="screen-review" class="screen">
-  <div class="review-header" style="width:100%">
-    <div class="review-title">❌ الأسئلة الخاطئة</div>
-    <div class="review-count" id="wrong-count-badge">0</div>
+<!-- RESULT -->
+<div id="sr" class="scr">
+  <div class="rcircle" id="rcircle">
+    <div id="rpct" style="font-size:32px;font-weight:900">0%</div>
+    <div class="rplbl">النتيجة</div>
   </div>
-  <div id="review-list" style="width:100%;display:flex;flex-direction:column;gap:14px"></div>
-  <button class="btn-back" onclick="showScreen('screen-result')">← الرجوع للنتيجة</button>
+  <div class="rmsg"><h2 id="rmsg">💪 أحسنت!</h2><p id="rsub">استمر في المراجعة</p></div>
+  <div class="rstats">
+    <div class="rsc"><div class="rsn" id="rc" style="color:var(--green)">0</div><div class="rsl">✅ صحيحة</div></div>
+    <div class="rsc"><div class="rsn" id="rw" style="color:var(--red)">0</div><div class="rsl">❌ خاطئة</div></div>
+    <div class="rsc" style="grid-column:1/-1"><div class="rsn" id="rt" style="color:var(--orange)">0</div><div class="rsl">📋 إجمالي</div></div>
+  </div>
+  <div class="rbtns">
+    <button class="revbtn" id="btn-review">📖 راجع الأسئلة الغلط</button>
+    <button class="rstbtn" id="btn-restart">🔄 ابدأ الاختبار من جديد</button>
+    <button class="hmebtn" id="btn-home-r">🏠 القائمة الرئيسية</button>
+  </div>
+</div>
+
+<!-- REVIEW -->
+<div id="sv" class="scr">
+  <div class="vhdr" style="width:100%">
+    <div class="vtitle">❌ الأسئلة الخاطئة</div>
+    <div class="vcnt" id="vcnt">0</div>
+  </div>
+  <div id="vlist" style="width:100%;display:flex;flex-direction:column;gap:14px"></div>
+  <button class="bkbtn" id="btn-back-rev">← الرجوع للنتيجة</button>
 </div>
 
 <script>
-const LETTERS = ['أ', 'ب', 'ج', 'د'];
+const L=['أ','ب','ج','د'];
 
 const MC=[
-{q:"عبارة عن مجموعة من الحقائق والأرقام المرتبطة بالأحداث التي وقعت بالفعل.",ch:["البيانات","المعلومات","كلا من أ، ب","لا شيء مما سبق"],a:0},
-{q:"يمكن قياس البيانات:",ch:["كمياً","وصفياً","كمياً ووصفياً","لا شيء مما سبق"],a:2},
-{q:"هي المنتج النهائي لتشغيل البيانات، ويجب أن تكون ملائمة لغرض معين أو ذات منفعة.",ch:["البيانات","المعلومات","كلا من أ، ب","لا شيء مما سبق"],a:1},
-{q:"عبارة عن بيانات تم تشغيلها طبقاً لقواعد وإجراءات وبرامج محددة حتى تتحول إلى الشكل والمضمون الذي يؤدي إلى استفادة متخذ القرار منها، كما يجب أن تؤدي إلى تخفيض حالة عدم التأكد.",ch:["البيانات","المعلومات","كلا من أ، ب","لا شيء مما سبق"],a:1},
-{q:"تقدر قيمة إنتاج إحدى الشركات بحوالي ١٠٠ مليون جنيه مصري، فإنها تعد:",ch:["بيان","معلومة","كل ما سبق","لا شيء مما سبق"],a:1},
-{q:"نصيب أو حصة السوق لشركة تعمل في مجال التعدين ٨٠٪ من السوق المصري، فإنها تعد:",ch:["بيان","معلومة","كل ما سبق","لا شيء مما سبق"],a:1},
-{q:"تتسم البيانات بمجموعة من الخصائص ليس منها ما يلي:",ch:["مثل الحقائق التي تعبر عن الأحداث التي وقعت بالفعل","كمية ووصفية","لازمة لإنتاج المعلومات اللازمة لاتخاذ القرارات","يتوافر فيها خاصية زيادة رصيد المعرفة لدى متخذ القرار"],a:3},
-{q:"خاصية .... تعني أن تكون المعلومات مناسبة لاستخدامات المدير، ويتطلب ذلك السرعة المناسبة لوصول المعلومات لمراكز واتخاذ القرارات الإدارية والوصفية.",ch:["التوقيت المناسب","الدقة","الصلاحية","المرونة"],a:0},
-{q:"تحديد وتوفير الميزانية اللازمة لإنشاء مبنى للتوسع في إحدى المنظمات مثال على خاصية .....",ch:["التوقيت المناسب","الدقة","الصلاحية","المرونة"],a:0},
-{q:"خاصية .... تعني أن تكون المعلومات في صورة صحيحة وخالية من الأخطاء وممثلة للواقع ومستقاة من مصادرها الأولية والثانوية.",ch:["التوقيت المناسب","الدقة","الصلاحية","المرونة"],a:1},
-{q:"خاصية .... تعني أن تكون نوعية المعلومات مناسبة وصالحة للمجال المستخدمة فيه.",ch:["التوقيت المناسب","الدقة","الصلاحية","المرونة"],a:2},
-{q:"خاصية ...... يقصد بها مدى تهيئة المعلومات وتيسيرها من أجل تلبية الاحتياجات المختلفة لكافة المستفيدين.",ch:["التوقيت المناسب","الدقة","الصلاحية","المرونة"],a:3},
-{q:"خاصية ...... تعني أن تكون المعلومات واضحة وخالية من الغموض ومتسقة فيما بينها دون تعارض أو تناقض.",ch:["الشمول","الوضوح","الصلاحية","المرونة"],a:1},
-{q:"بطاقة الرقم القومي، كارنيه الكلية مثال على خاصية ......",ch:["الدقة","الصلاحية","الوضوح","كلاً من أ، ج"],a:3},
-{q:"خاصية ...... أن تقوم المعلومات بالإجابة على جميع أنواع الأسئلة التي يحتاج إليها متخذ القرار وأن تكون المعلومات في صورة كاملة دون تفصيل زائد أو دون إيجاز قد يفقدها معناها ومقصدها وغرضها.",ch:["الشمول","الوضوح","الصلاحية","المرونة"],a:0},
-{q:"ليس من خصائص المعلومات.",ch:["الشمول","الوضوح","الإيجاز","المرونة"],a:2},
-{q:"يتم تحويل البيانات إلى معلومات من خلال عدة خطوات تبدأ بعملية ......",ch:["التلخيص","التسجيل","الفرز","الاسترجاع"],a:1},
-{q:"مصادر الحصول على البيانات:",ch:["مصادر الداخلية","مصادر الخارجية","كلاً من أ، ب","لا شيء مما سبق"],a:2},
-{q:"الفواتير، وأوامر الشراء، وأوامر التوريد مثال على مصادر البيانات .....",ch:["الداخلية","الخارجية","كلاً من أ، ب","لا شيء مما سبق"],a:0},
-{q:"أسعار المنافسين، وأسعار الفائدة، ومستوى الدخول مثال على مصادر البيانات .....",ch:["الداخلية","الخارجية","كلاً من أ، ب","لا شيء مما سبق"],a:1},
-{q:"التأكد من مطابقة البيانات التي تم تسجيلها للمستندات الأصلية التي تم الحصول على البيانات منها تسمى مرحلة:",ch:["تسجيل البيانات","مراجعة البيانات","التصنيف","الفرز"],a:1},
-{q:"وضع البيانات في شكل مجموعات متجانسة استناداً إلى معيار معين (ديموغرافي - جغرافي) تسمى مرحلة:",ch:["تسجيل البيانات","مراجعة البيانات","التصنيف","الفرز"],a:2},
-{q:"العوامل ...... تشير إلى عوامل مجموعة مرتبطة بالإنسان مثل (النوع - السن - المؤهل).",ch:["الديموغرافية","الجغرافية","الاجتماعية","لا شيء مما سبق"],a:0},
-{q:"تقسيم المبيعات وفقاً لقطاعات سوقية معينة كمبيعات الإسكندرية ومبيعات القاهرة مثال على تصنيف البيانات بحسب ......",ch:["العوامل الديموغرافية","العوامل الجغرافية","العوامل الاجتماعية","العوامل النفسية"],a:1},
-{q:"في مرحلة ...... يتم ترتيب البيانات بطريقة معينة تتفق والكيفية التي تستخدم بها تلك البيانات وبغض النظر عن المعيار المستخدم في الترتيب مثل ترتيب البيانات أبجدياً أو وفقاً لحجم التعاملات تنازلياً أو تصاعدياً.",ch:["تسجيل البيانات","مراجعة البيانات","التصنيف","الفرز"],a:3},
-{q:"...... دمج وجمع مجموعة من عناصر البيانات لكي تتوافق واحتياجات مستخدميها، وعادة ما يتم استخدام تلك البيانات في المستويات الإدارية العليا في التنظيم (مثل القوائم المالية).",ch:["تسجيل البيانات","التلخيص","التصنيف","الفرز"],a:1},
-{q:"...... يقصد به الاحتفاظ بالبيانات لحين الحاجة إليها.",ch:["الاسترجاع","التخزين","إعادة الإنتاج","التوزيع والاتصال"],a:1},
-{q:"...... يقصد به البحث عن عناصر بيانات معينة واستدعائها عند الحاجة إليها.",ch:["الاسترجاع","التخزين","إعادة الإنتاج","التوزيع والاتصال"],a:0},
-{q:"...... يقصد به تقديم البيانات في شكل يمكن أن يفهمها ويستخدمها متخذ القرار (مثل تقرير مكتوب - رسومات بيانية أو هندسية من خلال شاشة الحاسب مباشرة - وسائط التخزين).",ch:["الاسترجاع","التخزين","إعادة الإنتاج","التوزيع والاتصال"],a:2},
-{q:"...... يقصد به تقديم المعلومات لمن يحتاجها وإيصال المعلومات في الوقت والشكل والمكان المناسب.",ch:["الاسترجاع","التخزين","إعادة الإنتاج","التوزيع والاتصال"],a:3},
-{q:"من طرق تخزين البيانات:",ch:["مستندات ورقية","مصغرات فيلمية","وسائط ممغنطة","كل ما سبق"],a:3},
-{q:"عملية تحويل البيانات إلى معلومات يتطلب معالجة تلك البيانات وتشغيلها وفق عدة خطوات تسمى:",ch:["دورة حياة المنتج","دورة حياة البيانات","دورة النظام","لا شيء مما سبق"],a:1},
-{q:"لوحة المفاتيح، والقلم الضوئي، والفأرة، وقارئ الشفرة الشريطية من وسائل إدخال البيانات في ......",ch:["المعالجة اليدوية","المعالجة الإلكترونية","المعالجة المحاسبية","لا شيء مما سبق"],a:1},
-{q:"الملاحظات البشرية والمستندات الورقية والآلات الكاتبة، وآلات تسجيل النقد من وسائل إدخال البيانات في ......",ch:["المعالجة اليدوية","المعالجة الإلكترونية","المعالجة المحاسبية","لا شيء مما سبق"],a:0},
-{q:"الصوت البشري، والتقارير المكتوبة، والمحادثات وأدراج الحفظ من وسائل إخراج البيانات في ......",ch:["المعالجة اليدوية","المعالجة الإلكترونية","المعالجة المحاسبية","لا شيء مما سبق"],a:0},
-{q:"شاشة العرض المرئي، والاستجابة الصوتية، والطابعات من وسائل إخراج البيانات في ......",ch:["المعالجة اليدوية","المعالجة الإلكترونية","المعالجة المحاسبية","لا شيء مما سبق"],a:1},
-{q:"العقل البشري والسجلات الورقية ودواليب وأدراج الحفظ من وسائل تخزين البيانات في .....",ch:["المعالجة اليدوية","المعالجة الإلكترونية","المعالجة المحاسبية","لا شيء مما سبق"],a:0},
-{q:"ذاكرة الحاسب والشرائط الممغنطة والأقراص الممغنطة من وسائل تخزين البيانات في .....",ch:["المعالجة اليدوية","المعالجة الإلكترونية","المعالجة المحاسبية","لا شيء مما سبق"],a:1},
-{q:"تتحدد طريقة معالجة البيانات وفقاً لمجموعة من المتغيرات:",ch:["حجم البيانات المراد تشغيلها","درجة تداخل وتعقد البيانات والعمليات الحسابية","التكاليف والوقت المسموح به","كل ما سبق"],a:3},
-{q:"تتحدد طريقة معالجة البيانات وفقاً لمجموعة من المتغيرات ليس منها ما يلي:",ch:["حجم البيانات","درجة تداخل وتعقد البيانات","الوقت اللازم لتوفير البيانات","قيمة البيانات"],a:3},
-{q:"يختلف تصنيف المعلومات من مستخدم إلى آخر، وبصفة عامة يمكن تصنيف المعلومات وفقاً لـ .....",ch:["درجة الرسمية","مصدر المعلومات","درجة التغير","كل ما سبق"],a:3},
-{q:"تصنيف المعلومات وفقاً لدرجة الرسمية إلى:",ch:["معلومات ثابتة ومعلومات متغيرة","معلومات أولية ومعلومات ثانوية","معلومات رسمية ومعلومات غير رسمية","معلومات داخلية ومعلومات خارجية"],a:2},
-{q:"تصنيف المعلومات وفقاً لمصدر المعلومات إلى:",ch:["معلومات رسمية ومعلومات غير رسمية","معلومات داخلية ومعلومات خارجية","معلومات أولية ومعلومات ثانوية","كلا من ب، ج"],a:1},
-{q:"البيانات هي كل ما يلي عدا .....",ch:["حقائق وأرقام","صور وكلمات","اتخاذ قرار","لا شيء مما سبق"],a:2},
-{q:"تعتبر البيانات كل ما يلي عدا .....",ch:["حقائق ومادة خام","أرقام وصور","رصيد معرفة","لا شيء مما سبق"],a:2},
-{q:"البيانات يمكن التعبير عنها بأنها .....",ch:["كمية","قرار","كمية ووصفية","لا شيء مما سبق"],a:2},
-{q:"البيانات هي أساس إنتاج .....",ch:["حقائق","معلومة","قرار","حقائق ومعلومة معاً"],a:1},
-{q:"تمثل البيانات ..... حدثت بالفعل.",ch:["حقائق","معلومة","قرار","لا شيء مما سبق"],a:0},
-{q:"المعلومات هي ترجمة ..... للمساعدة في .....",ch:["حقائق، اتخاذ قرار","البيانات، اتخاذ قرار","حقائق، البيانات","لا شيء مما سبق"],a:1},
-{q:"..... يجب أن تكون ملائمة لغرض معين أو ذات منفعة.",ch:["الحقائق","المعلومات","البيانات","لا شيء مما سبق"],a:1},
-{q:"..... يتوافر فيها خاصية زيادة رصيد المعرفة لدى متخذ القرار.",ch:["القرارات","البيانات","الحقائق","المعلومات"],a:3},
-{q:"الانتهاء من إعداد موازنة شركة في الأول من شهر يوليو يمثل عدم مراعاة خاصية .....",ch:["المرونة","التوقيت","الشمول","الصلاحية"],a:1},
-{q:"ترتبط خاصية ..... بالزمن الذي تستغرقه عملية معالجة البيانات وإخراجها في شكل تقارير.",ch:["التوقيت","المرونة","الشمول","الصلاحية"],a:0},
-{q:"استخدام مقياس رسم في الخريطة مؤشر على توافر خاصية .....",ch:["المرونة","الوضوح","الدقة","الشمول"],a:2},
-{q:"استخدام الأرقام والمسافات والنماذج مؤشر على توافر خاصية .....",ch:["الدقة","الوضوح","المرونة","الشمول"],a:0},
-{q:"تشير مدى مناسبة المعلومات للمستوى الإداري الذي يحتاج إليها إلى خاصية .....",ch:["المرونة","الوضوح","الصلاحية","الشمول"],a:2},
-{q:"تشير مدى مناسبة المعلومات للغرض الموجه إلى تحقيقه إلى خاصية .....",ch:["الدقة","الوضوح","الصلاحية","الشمول"],a:2},
-{q:"المعلومات التي يمكن استخدامها عن طريق العديد من المستفيدين في عدة أماكن تتسم بخاصية .....",ch:["المرونة","الوضوح","الملائمة","الدقة"],a:0},
-{q:"تقديم ملف مواعيد تصليح آلات المصنع إلى رئيس مجلس الإدارة لا تتفق مع خاصية .....",ch:["المرونة","التوقيت","الشمول","الصلاحية"],a:3},
-{q:"تتسم المعلومات الموجودة ببطاقة الرقم القومي بالشمول لأنها:",ch:["معلومات متنوعة","الوضوح","المرونة","الغموض"],a:1},
-{q:"تشير خاصية ..... أن تكون المعلومات خالية من الغموض ومتسقة فيما بينها دون تعارض.",ch:["المرونة","الوضوح","الشمول","الدقة"],a:1},
-{q:"تشير خاصية ..... أن تقوم المعلومات بالإجابة على جميع أنواع الأسئلة التي يحتاج إليها متخذ القرار.",ch:["المرونة","الوضوح","الشمول","الصلاحية"],a:2},
-{q:"الخطوة الأولى لتحويل البيانات إلى معلومات هي .....",ch:["إعادة الإنتاج","التخزين","التسجيل","مراجعة البيانات"],a:2},
-{q:"تتمثل المصادر الداخلية للبيانات فيما يلي عدا .....",ch:["فواتير الشراء","أوامر التوريد","دخل الموظف","أسعار الفائدة"],a:3},
-{q:"يمثل اسمك في بطاقة الرقم القومي بيانات .....",ch:["رسمية","داخلية","رسمية وأولية","رسمية وداخلية"],a:2},
-{q:"يمثل قيام المحاسب بمطابقة أرقام فواتير الشراء مع ما أدخله على جهاز الحاسب الشخصي بالشركة .....",ch:["إعادة إنتاج","تصنيف","تخزين","مراجعة البيانات"],a:3},
-{q:"يمثل قيام محاسب بإحدى الشركات بعملية جمع جانب الأصول لميزانية الشركة مرحلة .....",ch:["إعادة إنتاج","تصنيف","تخزين","مراجعة البيانات"],a:3},
-{q:"بيانات بطاقة الرقم القومي .....",ch:["رسمية ومتغيرة","رسمية وأولية","متغيرة","لا شيء مما سبق"],a:1},
-{q:"أرقام ميزانية الشركات في البورصة بيانات .....",ch:["رسمية ومتغيرة","رسمية وأولية","متغيرة","لا شيء مما سبق"],a:1},
-{q:"أدخل محاسب إحدى الشركات بيانات الموردين وفقاً لموقعهم الجغرافي مستخدماً عملية .....",ch:["إعادة الإنتاج","التصنيف","التسجيل","الاسترجاع"],a:1},
-{q:"ترتيب أسماء الطلاب في قاعدة البيانات أبجدياً يشير إلى عملية .....",ch:["الفرز","التصنيف","التسجيل","الاسترجاع"],a:0},
-{q:"إدخال بيانات السلع التي تنتجها إحدى الشركات وفقاً لحجم مبيعاتها تنازلياً يشير إلى عملية .....",ch:["إعادة الإنتاج","التصنيف","التسجيل","الفرز"],a:3},
-{q:"إدخال بيانات عملاء الشركة وفقاً لخصائصهم الجغرافية يشير إلى عملية .....",ch:["الفرز","التصنيف","التسجيل","الاسترجاع"],a:1},
-{q:"يمثل دمج وجمع مجموعة من عناصر البيانات لكي تتوافق واحتياجات مستخدميها .....",ch:["إعادة الإنتاج","التصنيف","التسجيل","التلخيص"],a:3},
-{q:"يمثل تقديم الميزانية لمجلس إدارة إحدى الشركات ..... للمعلومات.",ch:["إعادة الإنتاج","التصنيف","التسجيل","التلخيص"],a:3},
-{q:"يمثل بحث مدير المخازن عن كمية الأصناف المخزنة في قاعدة بيانات مخزن منطقة شرق مرحلة .....",ch:["إعادة الإنتاج","التخزين","التسجيل","الاسترجاع"],a:3},
-{q:"تقديم أسماء خريجي كلية التجارة بجامعة الزقازيق دفعة ٢٠١٨ إلى جمعية رجال الأعمال يمثل مرحلة .....",ch:["إعادة الإنتاج","التخزين","التسجيل","التوزيع والاتصال"],a:3},
-{q:"تستخدم طريقة المعالجة اليدوية للمعلومات في عدة حالات ليس منها .....",ch:["صغر حجم المعلومات","انخفاض تكلفة المعالجة","تداخل البيانات","بساطة العمليات الحسابية"],a:2},
-{q:"تستخدم طريقة المعالجة الآلية للمعلومات في عدة حالات ليس منها .....",ch:["صغر حجم المعلومات","ارتفاع تكلفة المعالجة","تداخل البيانات","تعقد العمليات الحسابية"],a:0},
-{q:"هو برنامج يستخدم لإنشاء قواعد البيانات والتحكم بها من حيث الإضافة والحذف والاستعلام والتعديل:",ch:["برنامج Access 2007","برنامج Excel 2007","برنامج Word 2007","لا شيء مما سبق"],a:0},
-{q:"مجموعة من المعلومات مخزنة في جدول أو أكثر بشكل منظم.",ch:["برامج البيانات","قواعد البيانات","قواعد المعرفة","لا شيء مما سبق"],a:1},
-{q:"من الكائنات التي تتعامل معها برنامج Microsoft Access 2007:",ch:["الجداول والاستعلامات","النماذج والتقارير","وحدات الماكرو والوحدات النمطية","كل ما سبق"],a:3},
-{q:"هو عبارة عن مجموعة من الأعمدة Columns والصفوف Rows المتقاطعة مشكلة مربعات تسمى بالخلايا:",ch:["الجداول","الاستعلام","النموذج","التقرير"],a:0},
-{q:"يتم إعداد ..... بالاعتماد على خاصية الفرز.",ch:["الجداول","الاستعلامات","التقارير","النماذج"],a:1},
-{q:"..... هو مجموعة محددة أو مختارة أو مصفاة من بيانات الجدول حسب شروط أو خصائص معينة.",ch:["الجداول","الاستعلام","النموذج","التقرير"],a:1},
-{q:"..... هو الشكل النهائي الذي توضع به البيانات وتوضع البيانات فيه بشكل مناسب وبأسلوب منمق.",ch:["الجداول","الاستعلامات","النماذج","التقارير"],a:2},
-{q:"..... هي تحديد البيانات التي يتم طباعتها ويتم من خلالها اختيار شكل وتصميم ورقة الطباعة.",ch:["الجداول","الاستعلامات","النماذج","التقارير"],a:3},
-{q:"تستخدم ..... لإضافة وظائف إلى النماذج والتقارير وعناصر التحكم.",ch:["النماذج","التقارير","وحدات الماكرو","الوحدات النمطية"],a:2},
-{q:"..... أداة تسمح بتنفيذ المهام بصفة تلقائية وهي عبارة عن سلسلة من العمليات التي تنفذ كأمر واحد الهدف منه السرعة والسهولة للوصول إلى غرض ما.",ch:["النماذج","التقارير","وحدات الماكرو","الوحدات النمطية"],a:2},
-{q:"..... هي برامج صغيرة تلزم بأداء معين عند النقر على زر معين ويستخدم لذلك أوامر لغة الفيجوال بيسك.",ch:["النماذج","التقارير","وحدات الماكرو","الوحدات النمطية"],a:3},
-{q:"من أهم مميزات قواعد البيانات (برنامج Access):",ch:["القدرة على تخزين البيانات بشكل منتظم","القدرة على إجراء عمليات الفرز والتصفية","القدرة على حماية البيانات وتحديد حق الوصول","كل ما سبق"],a:3},
-{q:"يمكن تقسيم قواعد البيانات من حيث الحجم إلى:",ch:["قواعد بيانات ذات شكل هرمي","مشروعات صغيرة","مشروعات كبيرة","مشروعات صغيرة وكبيرة"],a:3},
-{q:"يمكن تقسيم قواعد البيانات من حيث طريقة العمل إلى:",ch:["قواعد بيانات ذات شكل هرمي","قواعد بيانات شبكية","قواعد بيانات علائقية","كل ما سبق"],a:3},
-{q:"يتعامل Access 2007 مع العديد من البيانات، وتشير المذكرة إلى .....",ch:["الصور والوثائق والرسومات البيانية والكائنات","البيانات الرقمية والأبجدية بطول أكبر من ٢٥٥ حرف","الأعداد الصحيحة والكسور","التواريخ والأرقام"],a:1},
-{q:"قيمة رقمية فريدة يدرجها Office Access 2007 تلقائياً عند إضافة سجل.",ch:["النص","المذكرة","التاريخ والوقت","ترقيم تلقائي"],a:3},
-{q:"يتعامل Access 2007 مع العديد من البيانات ويشير الكائن OLE إلى .....",ch:["الكائنات OLE","بيانات ثنائية أخرى يصل حجمها إلى أكثر من ١ جيجا","كلا من أ، ب","لا شيء مما سبق"],a:2},
-{q:"يتعامل Access 2007 مع العديد من البيانات وتشير المرفقات إلى .....",ch:["صور","ملفات ثنائية","ملفات Office","كل ما سبق"],a:3},
-{q:"يتعامل Access 2007 من خلال الخطوات التالية:",ch:["انقر على زر ابدأ/ Access 2007","انقر على قائمة البرامج/ أوفيس/ Access 2007","انقر على ابدأ/ قائمة البرامج/ أوفيس/ Access 2007","لا شيء مما سبق"],a:2},
-{q:"هو أول مكونات نافذة برنامج Access، ويحتوي على الأزرار الثلاثة القياسية (زر التصغير - زر التكبير أو الاستعادة - زر الإغلاق).",ch:["شريط العنوان","شريط المعلومات","فئات القوالب","زر شعار الأوفيس"],a:0},
-{q:"يتضمن أهم الأوامر التي يحتاجها المستخدم أثناء عمله في قاعدة بيانات Access مثل أوامر حفظ، فتح، جديد.",ch:["شريط العنوان","شريط المعلومات","فئات القوالب","زر شعار الأوفيس"],a:3},
-{q:"فئات القوالب في برنامج Access 2007 تنقسم إلى:",ch:["فئات القوالب","قوالب من MS online","كلا من أ، ب","لا شيء مما سبق"],a:2},
-{q:"هي قوالب جاهزة في البرنامج للعمل عليها.",ch:["فئات القوالب","قوالب من MS online","كلا من أ، ب","لا شيء مما سبق"],a:0},
-{q:"هي مجموعة من القوالب يمكن تنزيلها فقط إذا كنت متصلاً بالانترنت من نفس موقع الشركة المصنعة.",ch:["فئات القوالب","قوالب من MS online","كلا من أ، ب","لا شيء مما سبق"],a:1},
-{q:"يمكن إغلاق برنامج Access 2007 عن طريق:",ch:["انقر فوق زر Microsoft Office ثم انقر إغلاق","الضغط على الزرين Alt+F4","كلا من أ، ب","لا شيء مما سبق"],a:2},
-{q:"access عبارة عن برنامج يستخدم لإنشاء قواعد البيانات والتحكم بها من حيث .....",ch:["الإضافة والحذف","الاستعلام والتعديل","الإضافة والحذف والاستعلام والتعديل","لا شيء مما سبق"],a:2},
-{q:"تستخدم المنظمات برنامج access في حالة .....",ch:["زيادة حجم البيانات والمعلومات","تعدد البيانات وارتفاع تكلفة المعالجة اليدوية","كبر حجم المنظمة","كل ما سبق"],a:3},
-{q:"المقصود بقاعدة البيانات ..... البيانات",ch:["إضافة","حذف","مخزن","تعديل"],a:2},
-{q:"عدد الكائنات التي يتعامل معها برنامج access .....",ch:["٤","٥","٦","٧"],a:2},
-{q:"..... عبارة عن مجموعة من الأعمدة والصفوف المتقاطعة مشكلة بمقاطعها ما يسمى .....",ch:["الاستعلام، الصف","الجدول، الخلية","النموذج، الخلية","الاستعلام، السجل"],a:1},
-{q:"أهم كائنات access 2007 .....",ch:["الاستعلامات","النماذج","الجداول","وحدات الماكرو"],a:2},
-{q:"..... هو الملف الأساسي الذي يحتوي على البيانات الكاملة.",ch:["الاستعلامات","النماذج","التقارير","الجداول"],a:3},
-{q:"لا يمكن أن تحتوي قاعدة البيانات على أكثر من .....",ch:["استعلام واحد","نموذج واحد","تقرير واحد","جدول واحد"],a:3},
-{q:"..... يحتوي على مجموعة مفرزة من البيانات وفقاً لخصائص معينة.",ch:["الاستعلام","نموذج","تقرير","جدول"],a:0},
-{q:"..... عبارة عن الشكل النهائي الذي توضع به البيانات على الحاسب الآلي.",ch:["الاستعلام","نموذج","تقرير","جدول"],a:1},
-{q:"كل البيانات المدخلة من خلال النماذج يتم حفظها تلقائياً في .....",ch:["الاستعلامات","النماذج","التقارير","الجداول"],a:3},
-{q:"يتم اختيار شكل وتصميم ورقة الطباعة لإعداد .....",ch:["الاستعلامات","النماذج","التقارير","الجداول"],a:2},
-{q:"عندما يقوم مصمم قاعدة البيانات بتحديد البيانات المطلوب طباعتها، فهو يعد .....",ch:["الاستعلامات","النماذج","التقارير","الجداول"],a:2},
-{q:"تستخدم ..... لإضافة وظائف إلى النموذج.",ch:["الاستعلامات","النماذج","التقارير","وحدات الماكرو"],a:3},
-{q:"..... سلسلة من العمليات التي تنفذ كأمر واحد.",ch:["الاستعلامات","النماذج","التقارير","وحدات الماكرو"],a:3},
-{q:"هي برامج صغيرة تلزم بأداء أمر معين عند النقر على زر معين.",ch:["الاستعلامات","النماذج","التقارير","الوحدات النمطية"],a:3},
-{q:"هي برامج صغيرة تستخدم أوامر لغة الفيجوال بيسك visual basic.",ch:["الاستعلامات","النماذج","التقارير","الوحدات النمطية"],a:3},
-{q:"يتميز برنامج access 2007 بقدرته على .....",ch:["إنشاء الاستعلامات والنماذج","إنشاء التقارير","توفير عدد كبير من الدوال","كل ما سبق"],a:3},
-{q:"يتميز برنامج access 2007 بقدرته على .....",ch:["تخزين البيانات والفرز","التصفية وربط الجداول","الإثنين معاً","كل ما سبق"],a:3},
-{q:"تصنف جملة \"تطبيقات تجارية على الحاسب الآلي\" بأنها .....",ch:["نص","ارتباط تشعبي","قيم منطقية","مذكرة"],a:3},
-{q:"..... تمثل القيم الحرفية ويصل طولها إلى أكثر من ٢٥٥ حرف.",ch:["قيم كسرية","نص","ترقيم تلقائي","مذكرة"],a:3},
-{q:"..... يمثل القيم الحرفية ويصل الحد الأقصى لهذه البيانات ٢٥٥ حرف.",ch:["قيم كسرية","نص","ترقيم تلقائي","مذكرة"],a:1},
-{q:"تسمح قاعدة بيانات access 2007 بتخزين الرقم ٠.٩٦٩ لأنه بيان من نوع؟",ch:["قيم كسرية","نص","ترقيم تلقائي","رقم"],a:0},
-{q:"يصل حجم الحقل من نوع ..... إلى ٨ بايت.",ch:["قيم منطقية","وقت","نص","لا شيء مما سبق"],a:1},
-{q:"..... هي قيمة رقمية فريدة يدرجها Office Access تلقائياً عند إضافة .....",ch:["قيم كسرية، سجل","نص، حقل","ترقيم تلقائي، حقل","مذكرة، سجل"],a:2},
-{q:"يستخدم access الترقيم التلقائي في حالة إضافة .....",ch:["استعلام","تقرير","نموذج","سجل"],a:3},
-{q:"الكائن ..... يستخدم لإنشاء قيم فريدة يمكن استخدامها كمفتاح أساسي.",ch:["قيم كسرية","نص","ترقيم تلقائي","مذكرة"],a:2},
-{q:"الكائن ..... هي قيم منطقية تتضمن إحدى قيمتين محتملتين ويصل حجم هذه القيمة إلى ..... بايت.",ch:["قيم كسرية، ٨","نص، ٢٥٥","ترقيم تلقائي، ٨","قيمة منطقية، ١"],a:3},
-{q:"الكائن ..... يستخدم لتخزين الكائنات OLE من تطبيقات Microsoft Windows أخرى، يصل حجم هذه البيانات إلى أكثر من .....",ch:["OLE، 8 بايت","نص، ١ جيجا بايت","OLE، ١ جيجا بايت","معالج بحث، ١ بايت"],a:2},
-{q:"يفضل تخزين الصور في access 2007 تحت كائن .....",ch:["مرفقات","Lookup Wizard","OLE","ارتباط تشعبي"],a:0},
-{q:"..... عبارة عن صور وملفات ثنائية وملفات Office.",ch:["قيم كسرية","نص","ترقيم تلقائي","المرفقات"],a:3},
-{q:"يستخدم لتخزين الارتباطات التشعبية .....",ch:["ارتباط تشعبي","معالج بحث","ترقيم تلقائي","المرفقات"],a:0},
-{q:"يستخدم لتوفير الوصول إلى صفحات الويب بنقرة واحدة .....",ch:["ارتباط تشعبي","نص","ترقيم تلقائي","المرفقات"],a:0},
-{q:"استخدام كائن ..... يمكنك من إنشاء حقل .....",ch:["ارتباط تشعبي","نص","معالج بحث","المرفقات"],a:2},
-{q:"الواجهة النهائية التي يتعامل معها المستخدم هي .....",ch:["الاستعلامات","النماذج","التقارير","الوحدات النمطية"],a:1},
-{q:"يسمى الشريط العلوي في access 2007 بـ .....",ch:["Ribbon","شريط العنوان","شريط المهام","أدوات التنسيق"],a:1},
-{q:"يتضمن ..... أهم الأوامر التي يحتاجها المستخدم أثناء عمله في قاعدة بيانات Access مثل الأمر فتح وحفظ.",ch:["Ribbon","شريط العنوان","زر شعار الأوفيس","أدوات التنسيق"],a:2},
-{q:"يحتوي شريط العنوان على .....",ch:["الأزرار القياسية","Ribbon","الأزرار القياسية والعنوان","لا شيء مما سبق"],a:2},
-{q:"شريط في نافذة access 2007 لتقديم إرشادات للمستخدم، هو .....",ch:["الأزرار القياسية","Ribbon","العنوان","المعلومات"],a:3},
-{q:"تصنف فئات القوالب في نافذة برنامج access 2007 إلى .....",ch:["Ribbon","فئات القوالب","تصميم قوالب","نافذة العمل"],a:1},
-{q:"لإغلاق نافذة 2007 access يمكن بالضغط على زر أوفيس واختيار ..... أو من ..... اضغط رمز .....",ch:["إغلاق، شريط العنوان، إغلاق","إغلاق، شريط الأدوات، إغلاق","إغلاق، شريط المعلومات، إغلاق","لا شيء مما سبق"],a:0},
-{q:"لإغلاق نافذة 2007 access يمكن من ..... اضغط رمز .....",ch:["شريط العنوان، إغلاق","شريط العنوان، alt+f4","شريط Ribbon، إغلاق","لوحة المفاتيح، esc"],a:0},
-{q:"لإغلاق نافذة 2007 access يمكن من ..... اضغط رمز .....",ch:["شريط العنوان، إغلاق","شريط العنوان، alt+f4","شريط Ribbon، إغلاق","لوحة المفاتيح، alt+f4"],a:3},
-{q:"هو مجموعة من الخطوات المنظمة والمدروسة التي يعتمد عليها مصمم قاعدة البيانات في سير عمل البرنامج الذي يتم إنشائه في برنامج الأكسيس.",ch:["النظام","قاعدة البيانات","القوالب","لا شيء مما سبق"],a:0},
-{q:"ينقسم النظام إلى عدة مراحل هي:",ch:["مدخلات ومخرجات","مدخلات ومعالجة ومخرجات","مدخلات ومعالجة","لا شيء مما سبق"],a:1},
-{q:"هي المرحلة الأولى عند بدء تصميم النظام وتتمثل في إنشاء الجداول التي من طريقها يمكننا إدخال البيانات وحفظها داخل الجداول.",ch:["المدخلات","المعالجة","المخرجات","لا شيء مما سبق"],a:0},
-{q:"..... هي المرحلة الثانية بعد بدء تصميم وإنشاء الجداول وإتمام إدخال البيانات، وتأتي عملية الاستعلام.",ch:["المدخلات","المعالجة","المخرجات","لا شيء مما سبق"],a:1},
-{q:"هي المرحلة الأخيرة من مراحل تصميم النظام وهي المعلومات النهائية التي يتم إخراجها بشكل منسق.",ch:["المدخلات","المعالجة","المخرجات","لا شيء مما سبق"],a:2},
-{q:"في قاعدة بيانات مخزن يمثل تسجيل البضاعة:",ch:["جدول","استعلام","تقارير","نماذج"],a:0},
-{q:"في قاعدة بيانات مخزن يمثل الاستفسار عن كمية البضاعة المباعة أو كمية المخزون الناتجة من الأصناف:",ch:["جدول","استعلام","تقارير","نماذج"],a:1},
-{q:"في قاعدة بيانات مخزن يمثل طباعة معلومات المبيعات النهائية:",ch:["جدول","استعلام","تقارير","نماذج"],a:2},
-{q:"عند إنشاء القاعدة لابد أن تتبع النقاط التالية:",ch:["تسمية القاعدة","تحديد مكان القاعدة","تسمية وتحديد مكان القاعدة معاً","لا شيء مما سبق"],a:2},
-{q:"الخطوة الأولى لإنشاء قاعدة بيانات هي:",ch:["إنشاء القاعدة","تصميم القاعدة","تجهيز مكان القاعدة","فتح برنامج Access"],a:3},
-{q:"لإنشاء قاعدة بيانات نتبع الخطوات التالية:",ch:["انقر زر شعار أوفيس / اختيار جديد New","فتح Access / تسمية قاعدة البيانات / تحديد مكان قاعدة البيانات ثم إنشاء Create","فتح برنامج Access / اختيار جديد New","لا شيء مما سبق"],a:1},
-{q:"الشريط الظاهر في أعلى نافذة أكسيس الذي استعيض به عن القوائم وأشرطة الأدوات في الإصدارات السابقة، ويمكن إظهار أو إخفاء هذا الشريط بالضغط على يمين الفأرة على شريط التبويبات:",ch:["شريط Ribbon","شريط السجلات","شريط المعلومات","لا شيء مما سبق"],a:0},
-{q:"يحتوي شريط Ribbon على ثلاثة أجزاء وهي:",ch:["التبويبات الثابتة Standard Tab","أدوات التنسيق Contextual Tab","المجموعات Program Tabs","كل ما سبق"],a:3},
-{q:"المنطقة الأولى من شريط Ribbon (Home, Create, External Data, Data tools):",ch:["التبويبات الثابتة Standard Tab","أدوات التنسيق Contextual Tab","المجموعات Program Tabs","لا شيء مما سبق"],a:0},
-{q:"المنطقة المتوسطة من شريط Ribbon وتحتوي على أدوات تنسيق الكائنات التي يمكن إدراجها بالقاعدة:",ch:["التبويبات الثابتة Standard Tab","أدوات التنسيق Contextual Tab","المجموعات Program Tabs","لا شيء مما سبق"],a:1},
-{q:"المنطقة الأخيرة من شريط Ribbon وهي عبارة عن مجموعة من الأوامر المتعلقة ببعضها وتستخدم لتنفيذ مهمة محددة:",ch:["التبويبات الثابتة Standard Tab","أدوات التنسيق Contextual Tab","المجموعات Program Tabs","لا شيء مما سبق"],a:2},
-{q:"..... تظهر كافة العناصر التي تتكون منها قاعدة البيانات (جداول، استعلامات، تقارير، نماذج).",ch:["شريط السجلات","جزء التنقل All Tabs","مساحة العمل","لا شيء مما سبق"],a:1},
-{q:"يمكن رؤية كائنات قاعدة بيانات في .....",ch:["جزء التنقل","مساحة العمل","شريط السجلات","أزرار العرض"],a:0},
-{q:"من خلال هذا الجزء يمكن بناء الجداول والاستعلامات والتقارير وعند إنشاء قاعدة بيانات جديدة يظهر جدول افتراضي اسمه (جدول ١).",ch:["شريط السجلات","جزء التنقل All Tabs","مساحة العمل","لا شيء مما سبق"],a:2},
-{q:"يمكن من خلاله التنقل بين السجلات وإجراء عمليات البحث والتصفية.",ch:["شريط السجلات","جزء التنقل All Tabs","مساحة العمل","لا شيء مما سبق"],a:0},
-{q:"يمكن في برنامج Access 2007 عرض الجدول عن طريق:",ch:["النقر على View من شريط أدوات التنسيق","النقر على زر الأيمن للفأرة في مساحة العمل","كلا من أ، ب","لا شيء مما سبق"],a:2},
-{q:"من أمثلة خصائص الحقول:",ch:["تحديد طول الحقل","إظهار بعض البيانات بشكل مشفر","إظهار الأرقام العشرية بنقطة عائمة وتأييد المستخدم","كل ما سبق"],a:3},
-{q:"خاصية ..... تستخدم لتنسيق البيانات المدخلة في الحقول المعرفة من نوع نص أو تاريخ وتتحكم في كيفية إظهار المستخدمين للبيانات في قاعدة البيانات.",ch:["خاصية حجم الحقل","خاصية قناع الإدخال","خاصية القيمة الافتراضية","لا شيء مما سبق"],a:1},
-{q:"خاصية ..... تستخدم لتقييد المستخدم بقيمة معينة مثل منع المستخدم من إدخال رقم أقل من ١٦ سنة كحد أدنى لعمر الطالب.",ch:["خاصية حجم الحقل","خاصية قناع الإدخال","خاصية القيمة الافتراضية","خاصية قاعدة التحقق من الصحة"],a:3},
-{q:"..... هو ترتيب الجدول حسب حقل معين فيمكننا مثلاً ترتيب جدول الطلاب حسب اسم الطالب أو المجموع.",ch:["التصفية","الفرز","التجميد","لا شيء مما سبق"],a:1},
-{q:"إخفاء بعض صفوف الجدول وإظهار البعض الآخر بغرض الحصول على المعلومات المطلوبة فقط عند الطباعة.",ch:["التصفية","الفرز","التجميد","لا شيء مما سبق"],a:0},
-{q:"تعني هذه الخاصية أن تكون المعلومات في صورة صحيحة وخالية من الأخطاء وممثلة للواقع.",ch:["الصلاحية","الوضوح","الدقة","الشمول"],a:2},
-{q:"يمكن تخزين بيانات المشروعات كبيرة الحجم على قاعدة بيانات .....",ch:["Access","Paradox","Oracle","FoxPro"],a:2},
-{q:"في بيئة عمل Design View يمكن تنفيذ عدة أوامر منها .....",ch:["إضافة لون لخلفية الجدول","تعديل نوع البيانات وحذف الحقل","تنسيق حدود الجدول","تعديل نوع البيانات وحذف الحقل (فقط)"],a:3},
-{q:"كل مما يلي من مصادر البيانات الخارجية ماعدا .....",ch:["أسعار المنافسين","أسعار الفائدة","أرقام المبيعات والشيكات الواردة","لا شيء مما سبق"],a:2},
-{q:"يستخدم ..... لإنشاء قيمة فريدة يمكن استخدامها كمفتاح أساسي في برنامج Access 2007",ch:["الكائن","المعالج","الرقم","الترقيم التلقائي"],a:3},
-{q:"يقصد بتخزين قاعدة بيانات access 2007 على access ٢٠٠٢ .....",ch:["إنشاء القاعدة","تسمية القاعدة","تحديد مسار القاعدة","تحديد مكان القاعدة"],a:2},
-{q:"الأوامر Home, Create موجودة في شريط .....",ch:["أدوات التنسيق","التبويبات الثابتة","المجموعات في المهام","العنوان"],a:1},
-{q:"من أمثلة التنسيقات التي يمكن إجراءها على البيانات في برنامج Access .....",ch:["تغيير لون الخط وحجمه","تعبئة الخلفية بلون معين","تغيير نوع الخط","كل ما سبق"],a:3},
-{q:"يكتب ..... في مستطيل و ..... في دائرة أو شكل بيضاوي.",ch:["الكائن، الصفات","الكائن، السجلات","الجدول، السجلات","الصفات، الكائن"],a:0},
-{q:"في بيئة عمل Design View يمكن تنفيذ عدة أوامر ليس منها .....",ch:["نوع البيانات","تعديل اسم الحقل","خصائص الحقل","تعديل بيانات الحقل"],a:3},
-{q:"يتم استخدام ..... للإدخال أثناء معالجة البيانات يدوياً، بينما يتم استخدام ..... أثناء المعالجة الإلكترونية.",ch:["المستندات الورقية، الآلات الكاتبة","الملاحظات البشرية، القلم الضوئي","لوحة المفاتيح، الآلات الكاتبة","الفأرة، عصا التوجيه"],a:1},
-{q:"حقل يتم اختياره وتخصيصه كمعرف أو مفهرس لبقية حقول الجدول .....",ch:["ربط الجدول","المفتاح الأساسي","المفتاح الخارجي","المفتاح المركب"],a:1},
-{q:"يمكن من خلال خاصية ..... تشفير البيانات النصية والتاريخية في قاعدة البيانات.",ch:["قاعدة التحقق من الصحة","قناع الإدخال","تنسيق بيانات الجدول","القيمة الافتراضية"],a:1},
-{q:"يمكن تعيين المفتاح الأساسي في بيئة ..... بالنقر على مجموعة .....",ch:["Design view, Tools","Design view, View","Data Sheet view, View","Data Sheet view, Relationship"],a:0},
-{q:"يمكن من خلال استخدام ..... الانتقال بين الجداول والتقارير والنماذج.",ch:["جزء التنقل","شريط Ribbon","شريط السجلات","مساحة العمل"],a:0},
-{q:"أحد العبارات التالية غير صحيح:",ch:["يحتوي شريط شعار الأوفيس على زر فتح وإغلاق","يقسم شريط Ribbon إلى ثلاثة أقسام","القوالب هي قواعد البيانات الجاهزة","عند فتح access بعد التثبيت تظهر النافذة الأولى مرة أخرى"],a:3},
-{q:"أحد الأوامر التالية غير سليمة في access:",ch:["النقر على مجموعة Relationship لتفعيل التكامل المرجعي","النقر على مجموعة TOOLS لإنشاء مفتاح أساسي","التقارير تكون مطبوعة وورقياً","تعريف أكثر من حقل واحد في نفس الجدول على أنه ترقيم تلقائي"],a:3},
-{q:"الترتيب الصحيح لإنشاء قاعدة بيانات باستخدام برنامج Access هو .....",ch:["تسمية القاعدة - تحديد مكان القاعدة - إنشاء القاعدة","تحديد مكان القاعدة - إنشاء القاعدة - تسمية القاعدة","إنشاء القاعدة - تسمية القاعدة - تحديد مكان القاعدة","إنشاء القاعدة - تحديد مكان القاعدة - تسمية القاعدة"],a:0},
-{q:"يترتب على عملية تجميد أسماء الطلاب:",ch:["الترتيب الأبجدي","إخفاء الحقل","إخفاء السجلات","تجميد الحقل"],a:3},
-{q:"تعني تهيئة المعلومات وتيسيرها من أجل تلبية الاحتياجات المختلفة لكافة المستفيدين.",ch:["الدقة","الصلاحية","المرونة","الإتاحة"],a:2},
-{q:"يمكن من خلال استخدام ..... التنقل بين السجلات وإجراء عمليات البحث والتصفية.",ch:["جزء التنقل","شريط Ribbon","شريط السجلات","مساحة العمل"],a:2},
-{q:"أحد كائنات برنامج access عبارة عن مصفاه لبيانات الجدول حسب شروط أو خصائص معينة.",ch:["الاستعلامات","النماذج","التقارير","الوحدات النمطية"],a:0},
-{q:"..... من أدوات التخزين عند المعالجة الإلكترونية للبيانات، بينما ..... من أدوات التخزين عند المعالجة اليدوية.",ch:["أدراج الحفظ، ذاكرة الحاسب","العقل البشري، الشرائط الممغنطة","الشرائط الممغنطة، ذاكرة الحاسب","الأقراص الممغنطة، دواليب الحفظ"],a:3},
-{q:"يقصد بتصفية حقل أسماء طلاب الفرقة الأولى:",ch:["الترتيب الأبجدي","إخفاء الحقل","إخفاء السجلات","تجميد الحقل"],a:2},
-{q:"من مدخلات أي نظام .....",ch:["الاستعلامات","الجداول","التقارير","النماذج"],a:1},
-{q:"في الجداول يؤدي تقاطع الأعمدة مع الصفوف إلى تكوين .....",ch:["خلايا","وحدات ماكرو","إدراج","وحدات نمطية"],a:0},
-{q:"في جدول الناشر تم اختيار رقم الناشر كمفتاح أساسي، وتم ربط هذا الجدول بجدول الكتاب الذي تضمن فيه حقل رقم الناشر كمفتاح أيضاً، ويسمى المفتاح في جدول الكتاب باسم .....",ch:["المفتاح الخارجي","ربط الجدول","المفتاح الأساسي","المفتاح الأجنبي"],a:3},
-{q:"تعد ..... نوع من البيانات يتم تخزينها بشكل رقمي ويصل حجم الحقل إلى ٢ غيغا بايت.",ch:["النص","الصور","العملة","الرقم"],a:1},
-{q:"تسمى مخرجات برنامج access .....",ch:["الاستعلامات","وحدات الماكرو","التقارير","النماذج"],a:2},
-{q:"يتمتع برنامج access بالعديد من المزايا ليس منها .....",ch:["مفيد للمشروعات الكبيرة","حماية البيانات","تحديد صلاحيات المستخدمين","التحكم بالمعلومات"],a:0},
-{q:"يمكن من خلال خاصية ..... منع مستخدم قاعدة البيانات من إدخال قيمة محددة.",ch:["قاعدة التحقق من الصحة","تنسيق بيانات الجدول","القيمة الافتراضية","قناع الإدخال"],a:0},
-{q:"يساعد جزء التنقل all tables في .....",ch:["التنقل بين السجلات","التنقل بين التقارير","ترتيب الجداول","التنقل بين التقارير وترتيب الجداول"],a:3},
-{q:"كل مما يلي من خصائص المعلومات ماعدا .....",ch:["الوضوح","الشمول","الدقة","التحيز"],a:3},
-{q:"تتم في بيئة Data Sheet View العمليات التالية ماعدا .....",ch:["التجميد","الفرز","تعديل خصائص حقل","التصفية"],a:2},
-{q:"تمثل ..... الناتج النهائي لعملية تشغيل البيانات.",ch:["البيانات","المعلومات","النماذج","التقارير"],a:1},
-{q:"شهادة البكالوريوس الورقية تعتبر ..... لمصمم قاعدة البيانات",ch:["استعلام","تقرير","نموذج","سجل"],a:2},
-{q:"في برنامج access يطلق على العمود ..... بينما يطلق على الصف .....",ch:["حقل، سجل","كائن، مرفق","سجل، حقل","خانة، مجال"],a:0},
-{q:"أحد كائنات برنامج access تسمح بتنفيذ المهام بصورة تلقائية ولإضافة وظائف إلى النماذج والتقارير وعناصر التحكم",ch:["الاستعلامات","النماذج","التقارير","وحدات الماكرو"],a:3},
-{q:"أحد العبارات التالية صحيح:",ch:["تحتوي شريط شعار الأوفيس على زر طريقة العرض","يمكن تنزيل مجموعة من القوالب online من موقع Microsoft office","شريط المعلومات أول مكونات نافذة برنامج access","للربط بين الجداول لابد أن تكون أسماء الحقول واحدة"],a:1},
-{q:"التكامل ..... بين العالمين المادي والافتراضي هو قلب الثورة الصناعية الرابعة",ch:["الاسي والافقي","الاسي والراسي","الافقي والراسي","الافقي والجذري"],a:2},
-{q:"ظهر مصطلح الثورة الصناعية الرابعة لأول مرة في استراتيجية الصناعة الألمانية وطرح في .....",ch:["معرض هانوفر","معرض شركة جنرال الكتريك","معرض شركة جنرال موتورز","معرض سيلفان فريدمان"],a:0},
-{q:"تقوم الثورة الصناعية الجديدة (الثورة الصناعية الرابعة) على المزج بين التقنيات .....",ch:["المادية والمحتوية","المادية والرقمية","المادية والحسابية","الحسابية والاسية"],a:1},
-{q:"ظهور ..... في الثورة الصناعية الرابعة الذي يعمل بنظام الانتاج اللامركزي",ch:["المصنع الذكي","المؤسسات المالية","مصانع السيارات والآلات","معارض إكسبو"],a:0},
-{q:"أصبحت تطبيقات تقنيات الثورة الصناعية الرابعة هي الظاهرة ..... في منظمات الأعمال",ch:["التكنولوجية السريعة","التكنولوجية المهيمنة","التكنولوجية الموحدة","التكنولوجية الرأسمالية"],a:1},
-{q:"الثورة الصناعية الرابعة تؤدي إلى ..... في منظمات الاعمال",ch:["سرعة تطورها","عدم التنافس","قلة التنافس","زيادة التنافس"],a:3},
-{q:"في التحول الرقمي وتكامل سلاسل القيمة الرأسية والافقية يمتد التكامل ..... خارج المنظمة إلى ما بعد العمليات الداخلية",ch:["الافقي","الراسي","العرضي","تقييم المنتج"],a:0},
-{q:"في دوافع التحول نحو الثورة الصناعية الرابعة يتم تغيير نوعية المنتجات والخدمات لتصبح ..... في التحول الرقمي في المنتجات",ch:["مالية","رقمية","بيئية","قيمية"],a:1},
-{q:"في تطوير نماذج اعمال رقمية للوصول إلى العملاء يؤدي استخدام التكنولوجيا الرقمية إلى احداث تغيرات ..... في نماذج الاعمال",ch:["رأسية","افقية","جذرية","عرضية"],a:2},
-{q:"يرتبط جوهر الثورة الصناعية الرابعة بإدخال انظمة مترابطة شبكياً والتي تعمل على تدفق المعلومات عن طريق نظام التحكم ..... في الانتاج مما يعني دمج الواقع الافتراضي والفعلي معاً",ch:["الكلي","الجزئي","المركزي","اللامركزي"],a:3},
-{q:"هناك تأثيرات للثورة الصناعية الرابعة على منظمات الاعمال من بينها .....",ch:["التأثير على الابتكار التعاوني","التأثير الممتد","تأثير السرعة","تأثير النظام المتعدد"],a:0},
+{q:"هي النشاط الإنساني الهادف إلى المشاركة في وضع السياسات العامة للدولة ووضعها موضع التنفيذ، وتمارس في إطار الوحدات والمؤسسات المملوكة للدولة للخدمة والإنتاجية من خلال التخطيط والتنظيم والتوجيه والرقابة بهدف رفع مستوى المعيشة ورفاهية المجتمع.",ch:["الإدارة الحكومية","إدارة الأعمال","السياسة العامة للدولة","لا شيء مما سبق"],a:0},
+{q:"........ هي ترجمة الأهداف العامة لمجالات الأنشطة السياسية والاقتصادية والاجتماعية ومختلف مجالات الأنشطة التي تتدخل فيها الدولة، وقد تكون الأهداف العامة (رشيدة أو غير رشيدة).",ch:["الإدارة الحكومية","إدارة الأعمال","السياسة العامة للدولة","لا شيء مما سبق"],a:2},
+{q:"تنقسم أهداف الإدارة الحكومية (العامة) إلى:",ch:["أهداف سياسية واقتصادية","أهداف اجتماعية وروحية وأخلاقية","أهداف صحية وجمالية","كل ما سبق"],a:3},
+{q:"........ تتمثل في تحقيق الاستقرار السياسي وحماية النظام الاجتماعي، والتعامل مع المشكلات الخارجية.",ch:["الأهداف السياسية","الأهداف الاقتصادية","الأهداف الاجتماعية","الأهداف الصحية"],a:0},
+{q:"........ تتمثل في توفير السلع والخدمات اللازمة للمجتمع وتحقيق الاستقرار الاقتصادي.",ch:["الأهداف السياسية","الأهداف الاقتصادية","الأهداف الاجتماعية","الأهداف الصحية"],a:1},
+{q:"........ تتمثل في الحفاظ على الاستقرار الاجتماعي وتقليل الفجوة بين الطبقات وتحقيق الرفاهية.",ch:["الأهداف السياسية","الأهداف الاقتصادية","الأهداف الاجتماعية","الأهداف الصحية"],a:2},
+{q:"........ تتمثل في الأنشطة التي تستهدف المحافظة على الصحة العامة لأفراد المجتمع.",ch:["الأهداف السياسية","الأهداف الاقتصادية","الأهداف الاجتماعية","الأهداف الصحية"],a:3},
+{q:"يقصد بها مجموعة الأهداف التي تسعى إلى تنمية الإحساس بالجمال لدى الأفراد من خلال تجميل الميادين العامة.",ch:["الأهداف السياسية","الأهداف الاقتصادية","الأهداف الاجتماعية","الأهداف الجمالية"],a:3},
+{q:"تنقسم الاتجاهات المتعددة في علاقة الإدارة الحكومية بالسياسة العامة إلى عدة مداخل منها:",ch:["المدخل التقليدي","المدخل المعاصر","المدخل الديني","كلا من المدخل التقليدي والحديث"],a:3},
+{q:"ينظر إلى عمليتي وضع السياسة العامة وتنفيذها على أنهما عمليتان منفصلتان، فالإدارة الحكومية هي أداة لتنفيذ السياسات العامة للدولة.",ch:["المدخل التقليدي","المدخل الحديث","المدخل المعاصر","لا شيء مما سبق"],a:0},
+{q:"........ ينظر للإدارة الحكومية كأداة للمساهمة في تشكيل السياسة العامة وتنفيذها، ويركز هذا المدخل على أن مجال الإدارة الحكومية يتسع ليشمل كل من المساهمة في وضع وتصميم السياسة العامة وتنفيذها.",ch:["المدخل التقليدي","المدخل الحديث","المدخل المعاصر","لا شيء مما سبق"],a:1},
+{q:"من العوامل التي ساهمت في الاهتمام بدراسة الإدارة الحكومية:",ch:["اتساع الدور الحكومي وتعقد بيئته","التقدم التكنولوجي","انتشار الأمراض الوظيفية","كل ما سبق"],a:3},
+{q:"إن متابعة تطور دور الدولة يفسر تزايد النشاط الحكومي من خلال عدة مراحل منها:",ch:["مرحلة الدولة الحارسة والخادمة","مرحلة الدولة الراعية والموجهة","مفهوم الدولة الحديثة","كل ما سبق"],a:3},
+{q:"في مرحلة ........ قامت الدولة بمهمة توفير الظروف التي تخدم الأنشطة المادية للمواطنين (مثل توفير المرافق العامة)، دون أن تتدخل بشكل مباشر فيها بالإضافة إلى الأمن والدفاع والعدالة.",ch:["الدولة الحارسة","الدولة الخادمة","الدولة الراعية","الدولة الموجهة"],a:1},
+{q:"في مرحلة ........ كانت مسؤولة الدولة عن تحقيق رفاهية الفرد والمجتمع وهذا يتطلب تدخلها في مجالات الإسكان والصحة والتعليم والتأمينات.",ch:["الدولة الحارسة","الدولة الخادمة","الدولة الراعية","الدولة الموجهة"],a:2},
+{q:"في مرحلة ........ تزايد دور الدولة ليشمل الإشراف على تنظيم مختلف أوجه النشاط الاقتصادي.",ch:["الدولة الحارسة","الدولة الخادمة","الدولة الراعية","الدولة الموجهة"],a:3},
+{q:"في مرحلة ........ توسعت اختصاصات الدولة لتتدخل في مجالات متعددة مثل النشاط الاقتصادي والاجتماعي والصحي وغيرها مما يترتب عليه مسئوليات كبيرة تقوم بها الحكومات.",ch:["الدولة الحارسة","الدولة الخادمة","الدولة الراعية","مفهوم الدولة الحديثة"],a:3},
+{q:"التقدم التكنولوجي كان له بعض الآثار على عمل المنظمات الحكومية ومن هذه الآثار:",ch:["إنشاء وزارات تهتم بالأبحاث والابتكارات","الحكومة الإلكترونية","استخدام الحاسبات الإلكترونية","كل ما سبق"],a:3},
+{q:"انتشار الأمراض الوظيفية الحكومية ينتج عن:",ch:["عدم تنفيذ الخطط في مواعيدها","الإسراف واختلاس المال العام","تفشي الواسطة","كل ما سبق"],a:3},
+{q:"........ هي جماعة من الأفراد الذين استقروا في إقليم معين ويخضعون لسلطة حاكمة وتتكون من ثلاثة أركان أساسية هي (الشعب - الإقليم \"الأرض\" - السلطة الحاكمة \"الحكومة\").",ch:["الدولة","الحكومة","الأمة","لا شيء مما سبق"],a:0},
+{q:"........ هي السلطة التنفيذية أي التي تقوم بتنفيذ القوانين والسياسات العامة وإدارة المرافق العامة وتقديم الخدمات العامة إلى الجماهير من خلال المنظمات المختصة بهذا الغرض.",ch:["الدولة","الحكومة","الأمة","لا شيء مما سبق"],a:1},
+{q:"........ هي التي تكون مرتبطة مع بعضها إما باللغة أو الدين مثل الأمة الإسلامية والأمة العربية.",ch:["الدولة","الحكومة","الأمة","لا شيء مما سبق"],a:2},
+{q:"........ تهتم بوضع القواعد المنظمة التي تحكم أداء الأنشطة العامة والخاصة.",ch:["السلطة التشريعية","السلطة القضائية","السلطة التنفيذية","لا شيء مما سبق"],a:0},
+{q:"........ تختص بالرقابة على تطبيق القوانين وسيادة العدل.",ch:["السلطة التشريعية","السلطة القضائية","السلطة التنفيذية","لا شيء مما سبق"],a:1},
+{q:"........ تختص بتنفيذ السياسات العامة (الحكومة).",ch:["السلطة التشريعية","السلطة القضائية","السلطة التنفيذية","لا شيء مما سبق"],a:2},
+{q:"إن استمرار العاملين بالجهاز الإداري للدولة حتى بلوغ سن المعاش يعبر عن مبدأ:",ch:["خدمة المواطنين","تقديم المصلحة العامة","التخصص وتقسيم العمل","ثبات واستقرار العاملين المدنيين"],a:3},
+{q:"إن قيام الدولة بتقديم الخدمات المختلفة للمواطنين لتحقيق الرفاهية وإشباع حاجاتهم ورغباتهم يعبر عن مبدأ:",ch:["خدمة المواطنين","احترام النظم والقوانين","الضرورة الاجتماعية للخدمة المدنية","المسئولية العامة"],a:2},
+{q:"إن مبدأ ........ يعني أنه متى توفرت الشروط التي يحددها القانون للحصول على الخدمة وجبت التسوية في المعاملة.",ch:["خدمة المواطنين","مساواة الأفراد في الانتفاع بالخدمات الحكومية","تقديم المصلحة العامة","الإشراف السياسي"],a:1},
+{q:"مبدأ ........ يعني أن تخضع الإدارة الحكومية لإشراف القيادة السياسية في الدولة.",ch:["الاقتصاد في الأداء","المساواة في الانتفاع","المسؤولية العامة","الإشراف السياسي"],a:3},
+{q:"مبدأ ........ يعني أن جميع العاملين في مجال الإدارة الحكومية يكونون مسئولين أمام القيادة السياسية والسلطة التشريعية عن أي قصور في الأداء أو أي نقد يوجه إليهم من الجماهير أو الأحزاب السياسية.",ch:["الاقتصاد في الأداء","المساواة في الانتفاع","المسؤولية العامة","التخصص وتقسيم العمل"],a:2},
+{q:"مبدأ ........ يعني ترشيد استخدام الموارد من خلال التخطيط العلمي السليم والدراسة الاقتصادية لأي مشروعات لكي تقدم الحكومة عليها بالإضافة إلى إشراك العاملين في اتخاذ القرارات.",ch:["الاقتصاد في الأداء","المساواة في الانتفاع","تقديم المصلحة العامة","التخصص وتقسيم العمل"],a:0},
+{q:"مبدأ ........ يعني توجيه الجهود لتحقيق أهداف الدولة حتى لا يحدث تضارب.",ch:["خدمة المواطنين","المساواة في الانتفاع","احترام النظم والقوانين","مبدأ التكامل والتعاون في الأداء"],a:3},
+{q:"مبدأ ........ يعني تقديم الخدمات العامة بأعلى درجة من الكفاءة في ضوء احتياجات ورغبات المواطنين.",ch:["خدمة المواطنين","المساواة في الانتفاع","تقديم المصلحة العامة","لا شيء مما سبق"],a:0},
+{q:"مبدأ ........ يعني احترام الموظف العام والمواطنين للوائح المعمول بها دون تجاوز مع تطبيق جزاءات عادلة على الموظفين والمواطنين من خلال سلطة تأديبية عادلة.",ch:["خدمة المواطنين","المساواة في الانتفاع","احترام النظم والقوانين","تقديم المصلحة العامة"],a:2},
+{q:"مبدأ ........ يعني المساواة في المعاملة بين الأفراد متى توافرت الشروط التي يحددها القانون للحصول على الخدمة.",ch:["خدمة المواطنين","المساواة في الانتفاع","ثبات واستقرار العاملين","تقديم المصلحة العامة"],a:1},
+{q:"إن وضع تقديرات موضوعية عن الأحداث والمتغيرات المستقبلية يحيل عن مرحلة ........ من مراحل التخطيط.",ch:["التنبؤ","تحديد الأهداف","رسم السياسات","تحديد الإجراءات"],a:0},
+{q:"إن وجود خطة واحدة رئيسية على مستوى الدولة يتم تقسيمها إلى خطط فرعية يعبر عن مبدأ:",ch:["مركزية وضع الخطة","مرونة الخطة","وحدة الخطة وشمولها","إلزامية الخطة"],a:2},
+{q:"إن إقرار الخطة العامة للدولة ووضع الصيغة النهائية لها بواسطة القيادة السياسية للدولة يعبر عن مبدأ:",ch:["إلزامية الخطة","مركزية وضع الخطة","مرونة الخطة","وحدة الخطة وشمولها"],a:1},
+{q:"إن وضع خطة متكاملة محددة بتوقيت زمني محدد لإنجاز أهداف محددة تعبر عن مرحلة ........ من مراحل التخطيط.",ch:["التنبؤ","تحديد الأهداف","رسم السياسات","وضع البرامج والموازنات التقديرية"],a:3},
+{q:"إن أسلوب التخطيط الذي يتم فيه إجراء تغييرات في منطقة جغرافية معينة داخل الدولة هو التخطيط:",ch:["القومي الشامل","المحلي","الإقليمي","على مستوى القطاعات"],a:2},
+{q:"........ يعني تحديد الأهداف التي تسعى المنظمات إلى تحقيقها ورسم الخطط والبرامج الكفيلة بتحقيق تلك الأهداف مع الأخذ في الاعتبار الإمكانيات والقيود السائدة محلياً ودولياً.",ch:["التخطيط","التنظيم","التنسيق","الرقابة"],a:0},
+{q:"تتكون عملية التخطيط من عناصر رئيسية منها:",ch:["التنبؤ وتحديد الأهداف","رسم السياسات ووضع البرامج والموازنات","تحديد الإجراءات","كل ما سبق"],a:3},
+{q:"........ يقصد به وضع تقديرات موضوعية عن الأحداث والمتغيرات المؤثرة على نشاط الإدارة الحكومية في المستقبل.",ch:["التنبؤ","تحديد الأهداف","رسم السياسات","تحديد الإجراءات"],a:0},
+{q:"من الشروط الواجب توافرها في الأهداف الموضوعة حتى تكون صحيحة:",ch:["الوضوح وإمكانية التنفيذ","ارتباط الأهداف بالتوقيت الزمني","مراجعة الأهداف","كل ما سبق"],a:3},
+{q:"من الخصائص الواجب مراعاتها عند وضع السياسات لتحقيق فعاليتها:",ch:["أن تكون واقعية وواضحة ومكتوبة","أن تكون مرتبطة بالأهداف العامة","مشاركة أعضاء المنظمات في إعدادها","كل ما سبق"],a:3},
+{q:"........ هو مجموعة الخطوات المتكاملة المترابطة التي تتم في شكل تتابع زمني وفقاً لطريقة أداء كل نشاط.",ch:["الخطط","الإجراءات","السياسات","لا شيء مما سبق"],a:1},
+{q:"........ تعني أن إقرار الخطة ووضع الصيغة النهائية يجب أن يتم بواسطة القيادة السياسية في الدولة.",ch:["مرونة الخطة","مركزية وضع الخطة","إلزامية الخطة","وحدة الخطة"],a:1},
+{q:"........ تعني ضرورة الالتزام بأهداف الخطة وأهداف وسائل وإجراءات تنفيذ هذه الأهداف.",ch:["مرونة الخطة","مركزية وضع الخطة","إلزامية الخطة","وحدة الخطة"],a:2},
+{q:"........ يعني القدرة على تعديل أو تغيير الخطة بما يتفق مع الأهداف المستقبلية أو الظروف المتغيرة.",ch:["مرونة الخطة","مركزية وضع الخطة","إلزامية الخطة","وحدة الخطة"],a:0},
+{q:"........ يستهدف إحداث تغيرات جوهرية في قطاعات المجتمع بهدف تحقيق التنمية الشاملة في جميع القطاعات.",ch:["المستوى القومي","مستوى القطاعات","مستوى الأقاليم","المستوى المحلي"],a:0},
+{q:"التخطيط على ........ يركز على الأنشطة الخاصة بالخدمات التي تقدم للجمهور في وحدات الحكم المحلي.",ch:["المستوى القومي","مستوى القطاعات","مستوى الأقاليم","المستوى المحلي"],a:3},
+{q:"يوجد شكلين رئيسيين للتخطيط على مستوى المنظمة العامة الواحدة:",ch:["تخطيط القوى العاملة","التخطيط الإجرائي التفصيلي فقط","تخطيط البرامج والأهداف وحدها","تخطيط البرامج والأهداف والتخطيط الإجرائي التفصيلي"],a:3},
+{q:"توجد مجموعة من المعوقات التي تحد من فعالية عملية التخطيط في الإدارة الحكومية، ومنها أهمها:",ch:["عدم دقة التقديرات والتكاليف الباهظة","صعوبة التنسيق بين أهداف الخطط","عدم مراعاة العوامل البيئية","كل ما سبق"],a:3},
+{q:"إن التوفيق بين الأنشطة المختلفة لتحقيق الانسجام بينها من أجل تحقيق الأهداف المشتركة يعبر عن مفهوم:",ch:["التخطيط","التنظيم","التوجيه","التنسيق"],a:3},
+{q:"إن التنسيق الذي يقوم به رئيس الجمهورية ومعاونيه ومجلس الوزراء يعد تنسيقاً على مستوى:",ch:["الدولة","الوزراء","الهيئة","المحافظة"],a:0},
+{q:"من أهم وسائل التنسيق على مستوى المنظمة الإدارية:",ch:["القيادة الإدارية والمجلس","لجان التنسيق","الاجتماعات الدورية","كل ما سبق"],a:3},
+{q:"إن تلقي المرؤوس الأوامر والتوجيهات من مصدر واحد هو الرئيس المباشر يعبر عن أحد مبادئ التنظيم وهو مبدأ:",ch:["وحدة الهدف","وحدة القيادة","تكافؤ السلطة والمسئولية","وحدة الرئاسة والأمر"],a:3},
+{q:"التفويض الإداري يعد وسيلة يستخدمها المدير لـ....",ch:["التخلي عن مسئولياته","القيام بمسئولياته","التحايل على القانون","استقلال المرؤوسين"],a:1},
+{q:"التفويض من المفوض إلى المفوض إليه يجب أن يكون:",ch:["سرياً","غامضاً","شخصياً","شفوياً"],a:2},
+{q:"يجوز للرئيس المفوض ........ القرارات المفوضة بحكم سلطته الرئاسية.",ch:["مراجعة","سحب وتعديل","متابعة","كل ما سبق"],a:3},
+{q:"........ هو عملية تنسيق وترتيب للمهام والوظائف لتكوين وحدة تنظيمية متكاملة تعمل السلطة من خلالها بقصد تحقيق هدف محدد.",ch:["التخطيط","التنظيم","التنسيق","الرقابة"],a:1},
+{q:"التنظيم يشمل الجهاز الإداري من خلال:",ch:["تحديد هيكل تنظيمي","تنظيم العلاقات بين الأفراد","تنظيم الأنشطة داخل الجهاز الإداري","كل ما سبق"],a:3},
+{q:"التنظيم له جانب إنساني حيث يؤثر في الأفراد الذين يعملون فيه بعدة صور منها:",ch:["تقسيم العمل بين الأفراد","تحديد الإجراءات والأنظمة","توصيل التعليمات الرسمية","كل ما سبق"],a:3},
+{q:"يتكون التنظيم من خطوتين رئيسيتين هما:",ch:["إقامة هيكل التنظيم وتشغيل التنظيم","تشغيل التنظيم وتعديل التنظيم","إقامة هيكل التنظيم فقط","تعديل التنظيم فقط"],a:0},
+{q:"........ ينشأ بين الأفراد داخل المنظمة بهدف إشباع احتياجاتهم النفسية والاجتماعية، وهو تنظيم أساسه التفاعل الاجتماعي بين العاملين والعلاقات الشخصية بينهم.",ch:["التنظيم الرسمي","التنظيم غير الرسمي","التنظيم الإداري","لا شيء مما سبق"],a:1},
+{q:"........ هو التوفيق بين الأنشطة المختلفة للجماعة لتحقيق الانسجام بينها من أجل تحقيق الأهداف المشتركة، فالقصد منه ترتيب العمل الجماعي ومنع حدوث التضارب أو التعارض.",ch:["التخطيط","التنظيم","التنسيق","الرقابة"],a:2},
+{q:"من الأهداف الفرعية للتنسيق:",ch:["منع الازدواج في الاختصاصات","تجنب التنازع في العمل","تحديد الأولويات","كل ما سبق"],a:3},
+{q:"من أهم وسائل تحقيق التنسيق على مستوى المنظمة الإدارية:",ch:["القيادة الإدارية والتنسيق عن طريق المجالس","لجان التنسيق","الاجتماعات الدورية","كل ما سبق"],a:3},
+{q:"يقوم بالتنسيق بين المستويات التنظيمية من خلال تحقيق التناغم والانسجام بين أعضاء المنظمة والتوفيق بين الأنشطة المختلفة والقضاء على المعوقات التي تعوق إنجاز هذه الأنشطة.",ch:["القائد الإداري","لجان التنسيق","الاجتماعات الدورية","لا شيء مما سبق"],a:0},
+{q:"يقوم مجلس إدارة الشركات والهيئات العامة بإدارة وتوجيه الشركة أو الهيئة من خلال القرارات التي تتخذها والاشتراك مع رئيس مجلس الإدارة في القيام بمهمة التنسيق بين الوحدات والفروع المختلفة.",ch:["القائد الإداري","مجلس التنسيق","الاجتماعات الدورية","لا شيء مما سبق"],a:1},
+{q:"........ تقوم بتنسيق الأعمال والجهود بين الأقسام وتتولى الموضوعات العامة التي تهم أكثر من جهة وتتكون اللجان غالباً داخل الوزارات والمحافظات والمنظمات العامة.",ch:["القائد الإداري","لجان التنسيق","الاجتماعات الدورية","لا شيء مما سبق"],a:1},
+{q:"........ هي لقاءات يعقدها أعضاء المنظمة لمناقشة بعض الموضوعات، حيث يتبادل الرئيس والمرؤوسين وجهات النظر واقتراح الحلول والتوصيات التي تحقق التوافق بين أعضاء المنظمة وتسهم في التغلب على الصعوبات.",ch:["القائد الإداري","لجان التنسيق","الاجتماعات الدورية","لا شيء مما سبق"],a:2},
+{q:"ليس من مبادئ التنظيم في الإدارة الحكومية:",ch:["وحدة الرئاسة والأمر","مبدأ نطاق الإشراف","تقسيم العمل والتخصص فيه","مرونة الخطة"],a:3},
+{q:"مبدأ ........ يقصد به ضرورة أن يرتبط الهيكل التنظيمي للدولة بهدف رئيسي لأن التنظيم هو نظام موجه نحو هدف محدد.",ch:["وحدة الهدف","وحدة القيادة","التدرج في السلطات","لا شيء مما سبق"],a:0},
+{q:"مبدأ ........ يعني أن تكون هناك سلطة عليا موحدة في الدولة تقوم بتوجيه جميع المنظمات في الدولة لضمان سيرها جميعاً نحو الأهداف العامة للدولة بشكل متناسق وبعيداً عن التضارب والتنازع.",ch:["وحدة الهدف","وحدة القيادة","التدرج في السلطات","لا شيء مما سبق"],a:1},
+{q:"مبدأ ........ يعني أن يتم ترتيب السلطات الإدارية من أعلى إلى أسفل في شكل هرمي، ويتم توزيع المسؤوليات والواجبات على العاملين في المنظمات العامة بناءً على هذا الترتيب.",ch:["وحدة الهدف","وحدة القيادة","التدرج في السلطات","لا شيء مما سبق"],a:2},
+{q:"........ يقصد بها الحق الشرعي في إصدار الأوامر إلى المرؤوسين لتوجيه جهودهم نحو تحقيق الأهداف المحددة.",ch:["المسؤولية","السلطة","التفويض","لا شيء مما سبق"],a:1},
+{q:"........ هي التزام الفرد الذي منح السلطة للقيام بأداء الواجبات الوظيفية ومحاسبته على النتائج.",ch:["المسؤولية","السلطة","التفويض","لا شيء مما سبق"],a:0},
+{q:"........ تعني البعد عن التعقيد والاقتصار على الأشياء الضرورية.",ch:["بساطة التنظيم","مرونة التنظيم","التنسيق","لا شيء مما سبق"],a:0},
+{q:"........ تعني قابلية التنظيم للتعديل ليساير التطور والتغيرات والقضاء على سوء الأداء.",ch:["بساطة التنظيم","مرونة التنظيم","التنسيق","لا شيء مما سبق"],a:1},
+{q:"........ يعني عدد الأفراد الذين يمكن للرئيس أن يشرف عليهم إشرافاً مباشراً وفعالاً.",ch:["نطاق الإشراف","مرونة التنظيم","التنسيق","التخصص وتقسيم العمل"],a:0},
+{q:"من المزايا التي يحققها مبدأ التدرج في السلطات وتحديد المسؤوليات:",ch:["انسياب التعليمات من أعلى الهرم إلى قاعدته","وحدة الاتصال بين المستويات التنظيمية","توزيع الاختصاصات على الإدارات","كل ما سبق"],a:3},
+{q:"من المزايا التي يحققها مبدأ التخصص في العمل:",ch:["رفع مستوى الأداء وتحديد حجم العمالة","إيجاد المتخصصين وأعلى كفاءة إنتاجية","منع تكدس الأعمال","كل ما سبق"],a:3},
+{q:"يتوقف عدد المرؤوسين الذين يمكن للرئيس الإشراف المباشر والفعال على عدة عوامل أهمها:",ch:["قدرة الرئيس وخبرته وتوافر المعلومات","طبيعة النشاط ومدى كفاءة المرؤوسين","استخدام الحاسبات ووسائل الاتصال الحديثة","كل ما سبق"],a:3},
+{q:"........ قيام المدير بإنابة أحد مرؤوسيه المباشرين في أداء بعض المهام التي تقع في دائرة اختصاصات المدير الأصلية وبصفة مؤقتة استناداً إلى نص قانوني يجيز ذلك، على أن يظل المدير مسئولاً مسئولية نهائية عن تلك المهام.",ch:["وحدة الأمر","التنسيق","وحدة القيادة","التفويض الإداري"],a:3},
+{q:"تمر عملية التفويض بخطوات محددة، ومنها:",ch:["تحديد الواجبات","تفويض السلطة","المساءلة","كل ما سبق"],a:3},
+{q:"يجب على المدير الالتزام بمجموعة من الأسس العلمية المستقرة عند قيامه بالتفويض ومنها:",ch:["أن يكون التفويض جزئياً وتكافؤ السلطة والمسؤولية","عدم جواز التفويض في المهام المفوضة","المسؤولية النهائية لا تفوض","كل ما سبق"],a:3},
+{q:"قرار التفويض يجب أن تتوافر فيه بعض الأركان والشروط حتى يكون صحيحاً، ومنها:",ch:["إصدار قرار التفويض وأن يكون صريحاً وواضحاً","أن يكون قرار التفويض مكتوباً","الإعلان عن قرار التفويض","كل ما سبق"],a:3},
+{q:"يحقق التفويض الفعال العديد من الفوائد التي تعود للمنظمات والمديرين والمرؤوسين، ومنها:",ch:["كفاءة اتخاذ القرارات وإدارة الوقت","تنمية المرؤوسين وتدفعهم إلى التعاون","رفع الروح المعنوية للمرؤوسين","كل ما سبق"],a:3},
+{q:"يوجد تردد في الإقدام على التفويض بسبب الاتجاهات السلبية التي يحملها كثير من المديرين ومنها:",ch:["عدم المعرفة العلمية بالتفويض","حب السيطرة والاستئثار بالسلطة","عدم الثقة بين الرؤساء والمرؤوسين","كل ما سبق"],a:3},
+{q:"قد يحجم المديرون عن القيام بالتفويض بسبب الخوف النابع من عدة مصادر مثل:",ch:["الخوف من انخفاض مستوى الأداء","الخوف من المنافسة والخوف على المصلحة الخاصة","الاعتقاد بأن المرؤوسين مشغولون","كل ما سبق"],a:3},
+{q:"يعبر مفهوم ........ عن وحدة روحية ومصالح اقتصادية.",ch:["الدولة","الحكومة","الأمة","الأهداف الروحية"],a:2},
+{q:"إن السلطة التي تختص بتنفيذ القوانين والسياسات العامة في الدولة هي:",ch:["السلطة التشريعية","الحكومة","الأمة","المجالس النيابية"],a:1},
+{q:"تقوم الحكومة بمهام الأمن الداخلي والقضاء والدفاع والأمن القومي والعلاقات الخارجية لتحقيق الأهداف:",ch:["الاقتصادية","الاجتماعية","السياسية","الصحية"],a:2},
+{q:"إن توسيع اختصاصات الدولة وتدخلها في مجالات النشاط الاقتصادي والاجتماعي والصحي والأمني وغيرها يعبر عن مفهوم الدولة:",ch:["الحديثة","الحارسة","الخادمة","الراعية"],a:0},
+{q:"إن قيام الحكومة بإنشاء المستشفيات العامة وحملات التطعيم ضد الأمراض والتأمين الصحي يرتبط بتحقيق الأهداف:",ch:["الاجتماعية","الأخلاقية والروحية","الاقتصادية","الصحية"],a:3},
+{q:"إن احترام ما نصت عليه الخطة من أهداف ووسائل وإجراءات لتنفيذ هذه الأهداف بالشكل المحدد في الخطة يعبر عن أحد مبادئ التخطيط وهو مبدأ:",ch:["تحديد الهدف","وحدة الخطة وشمولها","إلزامية الخطة","مرونة الخطة"],a:2},
+{q:"إن القدرة على تعديل وتغيير الخطة بما يتناسب مع المتغيرات التي تحدث عند التنفيذ يعبر عن أحد مبادئ التخطيط وهو مبدأ:",ch:["إلزامية الخطة","مرونة الخطة","مركزية وضع الخطة","وحدة الخطة"],a:1},
+{q:"إن التخطيط الذي يغطي الدولة ككل ويهدف إلى تحقيق التنمية الشاملة في جميع القطاعات هو التخطيط:",ch:["على المستوى القومي الشامل","على مستوى القطاعات","على مستوى الأقاليم","على المستوى المحلي"],a:0},
 ];
 
-const questions = MC.map(item => ({
-  q: item.q,
-  choices: item.ch,
-  ans: item.a
-}));
+// STATE
+let studyIdx=0;
+let exArr=[],exIdx=0,exScore=0,exWrong=[],exHist=[],exDone=false;
 
-// ── state ──
-let shuffled = [], current = 0, score = 0, wrongList = [], answered = false, history = [];
-
-// ── particles ──
+// PARTICLES
 (function(){
-  const p = document.getElementById('particles');
-  const colors = ['#E8820C','#2D9E5F','#f0a94a','#3ab575','#3a8fd4'];
-  for(let i=0;i<20;i++){
-    const d = document.createElement('div');
-    d.className = 'particle';
-    d.style.left = Math.random()*100+'%';
-    d.style.background = colors[i%colors.length];
-    const s = 3+Math.random()*5;
-    d.style.width = d.style.height = s+'px';
-    d.style.animationDuration = (8+Math.random()*14)+'s';
-    d.style.animationDelay = (Math.random()*14)+'s';
+  const p=document.getElementById('particles');
+  const cols=['#E8820C','#2D9E5F','#f0a94a','#3ab575','#3a8fd4'];
+  for(let i=0;i<18;i++){
+    const d=document.createElement('div');d.className='pt';
+    d.style.left=Math.random()*100+'%';
+    d.style.background=cols[i%cols.length];
+    const s=3+Math.random()*5;d.style.width=d.style.height=s+'px';
+    d.style.animationDuration=(8+Math.random()*14)+'s';
+    d.style.animationDelay=(Math.random()*14)+'s';
     p.appendChild(d);
   }
 })();
 
-function shuffle(arr){
-  const a=[...arr];
-  for(let i=a.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
+function shuf(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=~~(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;}
+
+function tap(id,fn){
+  const el=document.getElementById(id);if(!el)return;
+  let tp=false;
+  el.addEventListener('touchend',function(e){e.preventDefault();tp=true;fn();},{passive:false});
+  el.addEventListener('click',function(){if(!tp)fn();tp=false;});
+}
+function tapEl(el,fn){
+  let tp=false;
+  el.addEventListener('touchend',function(e){e.preventDefault();tp=true;fn();},{passive:false});
+  el.addEventListener('click',function(){if(!tp)fn();tp=false;});
 }
 
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+function go(id){
+  document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  window.scrollTo(0,0);
 }
 
-function startQuiz(){
-  shuffled = shuffle(questions);
-  current=0; score=0; wrongList=[]; history=[];
-  showScreen('screen-quiz');
-  renderQuestion();
+window.addEventListener('DOMContentLoaded',function(){
+  tap('btn-study',()=>startStudy());
+  tap('btn-exam',()=>startExam());
+  tap('s-prev',()=>studyPrev());
+  tap('s-next',()=>studyNext());
+  tap('s-start',()=>startExam());
+  tap('s-home',()=>go('sw'));
+  tap('e-prev',()=>exPrev());
+  tap('e-next',()=>exNext());
+  tap('btn-review',()=>showReview());
+  tap('btn-restart',()=>startExam());
+  tap('btn-home-r',()=>go('sw'));
+  tap('btn-back-rev',()=>go('sr'));
+});
+
+// ── STUDY ──
+function startStudy(){
+  studyIdx=0;
+  document.getElementById('stot').textContent=MC.length;
+  go('ss');renderStudy();
 }
-
-function renderQuestion(dir){
-  const q = shuffled[current];
-  const prev = history[current];
-
-  document.getElementById('q-num').textContent = current+1;
-  document.getElementById('q-total').textContent = shuffled.length;
-  document.getElementById('live-score').textContent = score;
-  document.getElementById('progress-bar').style.width = (current/shuffled.length*100)+'%';
-
-  // card animation
-  const card = document.getElementById('q-card');
-  card.style.animation='none'; void card.offsetWidth;
-  card.style.animation = dir==='prev'
-    ? 'slideInRight 0.4s cubic-bezier(.4,0,.2,1)'
-    : 'slideIn 0.4s cubic-bezier(.4,0,.2,1)';
-
-  document.getElementById('q-text').textContent = q.q;
-
-  // build choices
-  const container = document.getElementById('choices');
-  container.innerHTML='';
-  q.choices.forEach((c,i)=>{
-    const btn = document.createElement('button');
-    btn.className='choice-btn';
-    btn.dataset.idx = i;
-    btn.innerHTML=`<div class="choice-letter">${LETTERS[i]}</div><span>${c}</span>`;
-    btn.onclick = ()=>answer(i);
-    container.appendChild(btn);
+function renderStudy(dir){
+  const it=MC[studyIdx];
+  const card=document.getElementById('scard');
+  card.className='scard '+(dir==='back'?'ab':'ai');void card.offsetWidth;
+  document.getElementById('snum').textContent=studyIdx+1;
+  document.getElementById('spbar').style.width=((studyIdx+1)/MC.length*100)+'%';
+  document.getElementById('sqtxt').textContent=it.q;
+  const an=document.getElementById('sans');an.innerHTML='';
+  const cont=document.createElement('div');cont.className='schoices';
+  it.ch.forEach((c,i)=>{
+    const row=document.createElement('div');
+    const ok=i===it.a;
+    row.className='scrow '+(ok?'ok':'no');
+    row.innerHTML=`<div class="sclet ${ok?'ok':'no'}">${L[i]}</div><span>${c}</span>`;
+    cont.appendChild(row);
   });
+  an.appendChild(cont);
+  document.getElementById('s-prev').className=studyIdx>0?'prevbtn on':'prevbtn';
+  document.getElementById('s-start').className=studyIdx===MC.length-1?'startbtn on':'startbtn';
+}
+function studyNext(){if(studyIdx<MC.length-1){studyIdx++;renderStudy('fwd');}}
+function studyPrev(){if(studyIdx>0){studyIdx--;renderStudy('back');}}
 
-  // feedback & nav
-  const fb   = document.getElementById('feedback');
-  const btnN = document.getElementById('btn-next');
-  const btnP = document.getElementById('btn-prev');
+// ── EXAM ──
+function startExam(){
+  exArr=shuf(MC);
+  exIdx=0;exScore=0;exWrong=[];exHist=[];exDone=false;
+  document.getElementById('etot').textContent=exArr.length;
+  go('se');renderMC();
+}
 
-  btnP.className = current>0 ? 'btn-prev show' : 'btn-prev';
-
+function renderMC(dir){
+  const q=exArr[exIdx],prev=exHist[exIdx];
+  document.getElementById('enum').textContent=exIdx+1;
+  document.getElementById('escore').textContent=exScore;
+  document.getElementById('epbar').style.width=(exIdx/exArr.length*100)+'%';
+  const card=document.getElementById('qcard');
+  card.className='qcard '+(dir==='back'?'ab':'ai');void card.offsetWidth;
+  document.getElementById('eqtxt').textContent=q.q;
+  const area=document.getElementById('eans');area.innerHTML='';
+  const cont=document.createElement('div');cont.className='choices';
+  q.ch.forEach((c,i)=>{
+    const btn=document.createElement('button');btn.className='cbtn';
+    btn.innerHTML=`<div class="clet">${L[i]}</div><span>${c}</span>`;
+    tapEl(btn,()=>mcAns(i));
+    cont.appendChild(btn);
+  });
+  area.appendChild(cont);
+  const fb=document.getElementById('efb');
+  document.getElementById('e-prev').className=exIdx>0?'prevbtn on':'prevbtn';
   if(prev!==undefined){
-    // restore state
-    answered=true;
-    const btns = container.querySelectorAll('.choice-btn');
-    btns.forEach(b=>b.disabled=true);
-
-    btns[prev.chosen].classList.add(prev.isCorrect?'correct':'wrong');
-    if(!prev.isCorrect){
-      btns[q.ans].classList.add('correct');
-      btns.forEach((b,i)=>{ if(i!==prev.chosen&&i!==q.ans) b.classList.add('dim'); });
-    } else {
-      btns.forEach((b,i)=>{ if(i!==prev.chosen) b.classList.add('dim'); });
-    }
-
-    if(prev.isCorrect){
-      fb.className='feedback-box correct-fb show';
-      fb.innerHTML=`<div class="feedback-title">✅ إجابة صحيحة!</div>أحسنت! اخترت الإجابة الصحيحة.`;
-    } else {
-      fb.className='feedback-box wrong-fb show';
-      fb.innerHTML=`<div class="feedback-title">❌ إجابة خاطئة</div>
-        الإجابة الصحيحة هي: <strong>${LETTERS[q.ans]}) ${q.choices[q.ans]}</strong>`;
-    }
-    btnN.className='btn-next show';
+    exDone=true;
+    const btns=cont.querySelectorAll('.cbtn');btns.forEach(b=>b.disabled=true);
+    btns[prev.ch].classList.add(prev.ok?'ok':'no');
+    if(!prev.ok)btns[q.a].classList.add('ok');
+    btns.forEach((b,i)=>{if(i!==prev.ch&&i!==q.a)b.classList.add('dim');});
+    fb.className='fbbox '+(prev.ok?'cfb on':'wfb on');
+    fb.innerHTML=prev.ok?'<div class="fbtitle">✅ إجابة صحيحة!</div>أحسنت!':`<div class="fbtitle">❌ إجابة خاطئة</div>الإجابة الصحيحة: <strong>${L[q.a]}) ${q.ch[q.a]}</strong>`;
+    document.getElementById('e-next').className='nxtebtn on';
   } else {
-    answered=false;
-    fb.className='feedback-box'; fb.innerHTML='';
-    btnN.className='btn-next';
+    exDone=false;fb.className='fbbox';fb.innerHTML='';document.getElementById('e-next').className='nxtebtn';
   }
 }
 
-function answer(chosen){
-  if(answered) return;
-  answered=true;
-
-  const q = shuffled[current];
-  const isCorrect = chosen===q.ans;
-
-  const btns = document.querySelectorAll('.choice-btn');
-  btns.forEach(b=>b.disabled=true);
-
-  btns[chosen].classList.add(isCorrect?'correct':'wrong');
-  if(!isCorrect) btns[q.ans].classList.add('correct');
-  btns.forEach((b,i)=>{
-    if(i!==chosen && i!==q.ans) b.classList.add('dim');
-    else if(isCorrect && i===chosen) {} // keep
-  });
-
-  // save history
-  history[current]={chosen, isCorrect};
-
-  if(isCorrect){
-    score++;
-    document.getElementById('live-score').textContent=score;
-    const fb=document.getElementById('feedback');
-    fb.className='feedback-box correct-fb show';
-    fb.innerHTML=`<div class="feedback-title">✅ إجابة صحيحة!</div>أحسنت! اخترت الإجابة الصحيحة.`;
-  } else {
-    const fb=document.getElementById('feedback');
-    fb.className='feedback-box wrong-fb show';
-    fb.innerHTML=`<div class="feedback-title">❌ إجابة خاطئة</div>
-      الإجابة الصحيحة هي: <strong>${LETTERS[q.ans]}) ${q.choices[q.ans]}</strong>`;
-    const already = wrongList.find(w=>w.origIdx===current);
-    if(!already){
-      wrongList.push({
-        origIdx: current,
-        num: current+1,
-        q: q.q,
-        chosenText: q.choices[chosen],
-        chosenLetter: LETTERS[chosen],
-        correctText: q.choices[q.ans],
-        correctLetter: LETTERS[q.ans]
-      });
-    }
-  }
-
-  document.getElementById('btn-next').className='btn-next show';
+function mcAns(ch){
+  if(exDone)return;exDone=true;
+  const q=exArr[exIdx],ok=ch===q.a;
+  const btns=document.querySelectorAll('.cbtn');btns.forEach(b=>b.disabled=true);
+  btns[ch].classList.add(ok?'ok':'no');
+  if(!ok)btns[q.a].classList.add('ok');
+  btns.forEach((b,i)=>{if(i!==ch&&i!==q.a)b.classList.add('dim');});
+  exHist[exIdx]={ch,ok};
+  if(ok){exScore++;document.getElementById('escore').textContent=exScore;document.getElementById('efb').className='fbbox cfb on';document.getElementById('efb').innerHTML='<div class="fbtitle">✅ إجابة صحيحة!</div>أحسنت!';}
+  else{document.getElementById('efb').className='fbbox wfb on';document.getElementById('efb').innerHTML=`<div class="fbtitle">❌ إجابة خاطئة</div>الإجابة الصحيحة: <strong>${L[q.a]}) ${q.ch[q.a]}</strong>`;
+    if(!exWrong.find(w=>w.i===exIdx))exWrong.push({i:exIdx,n:exIdx+1,q:q.q,ct:`${L[ch]}) ${q.ch[ch]}`,at:`${L[q.a]}) ${q.ch[q.a]}`});}
+  document.getElementById('e-next').className='nxtebtn on';
 }
 
-function nextQuestion(){
-  current++;
-  if(current<shuffled.length) renderQuestion('next');
-  else showResultScreen();
-}
+function exNext(){exIdx++;if(exIdx<exArr.length){renderMC('fwd');}else showResult();}
+function exPrev(){if(exIdx<=0)return;exIdx--;renderMC('back');}
 
-function prevQuestion(){
-  if(current<=0) return;
-  current--;
-  renderQuestion('prev');
-}
-
-function showResultScreen(){
-  const total=shuffled.length;
-  const pct=Math.round(score/total*100);
-
-  let color,msg,sub;
-  if(pct>=90)      {color='#2D9E5F';msg='🏆 ممتاز! أداء رائع!';        sub='نتيجة رائعة جداً، استمر!';}
-  else if(pct>=75) {color='#E8820C';msg='💪 جيد جداً! كمّل!';          sub='قريب من التميز، راجع الأخطاء.';}
-  else if(pct>=60) {color='#f0a94a';msg='📚 جيد، بس لازم مراجعة!';     sub='في أخطاء محتاج تراجعها.';}
-  else             {color='#E84444';msg='📖 محتاج مراجعة أكتر!';       sub='راجع الأسئلة الغلط وحاول تاني.';}
-
-  const circle=document.getElementById('result-circle');
-  circle.style.setProperty('--c1',color);
-  circle.style.setProperty('--pct',pct+'%');
-  document.getElementById('result-pct-num').textContent=pct+'%';
-  document.getElementById('result-pct-num').style.color=color;
-  document.getElementById('result-emoji-msg').textContent=msg;
-  document.getElementById('result-emoji-msg').style.color=color;
-  document.getElementById('result-sub').textContent=sub;
-  document.getElementById('res-correct').textContent=score;
-  document.getElementById('res-wrong').textContent=total-score;
-  document.getElementById('res-total').textContent=total;
-
-  const rb=document.getElementById('btn-review-wrap');
-  if(wrongList.length===0){ rb.style.display='none'; }
-  else { rb.style.display='block'; rb.textContent=`📖 راجع الـ ${wrongList.length} سؤال اللي غلطت فيها`; }
-
-  if(pct>=75) launchConfetti();
-  showScreen('screen-result');
+function showResult(){
+  const tot=exArr.length,pct=~~(exScore/tot*100);
+  let col,msg,sub;
+  if(pct>=90){col='#2D9E5F';msg='🏆 ممتاز! أداء رائع!';sub='نتيجة رائعة، استمر!';}
+  else if(pct>=75){col='#E8820C';msg='💪 جيد جداً! كمّل!';sub='قريب من التميز، راجع الأخطاء.';}
+  else if(pct>=60){col='#f0a94a';msg='📚 جيد، بس لازم مراجعة!';sub='في أخطاء محتاج تراجعها.';}
+  else{col='#E84444';msg='📖 محتاج مراجعة أكتر!';sub='راجع الأسئلة الغلط وحاول تاني.';}
+  const c=document.getElementById('rcircle');
+  c.style.setProperty('--c1',col);c.style.setProperty('--pct',pct+'%');
+  document.getElementById('rpct').textContent=pct+'%';document.getElementById('rpct').style.color=col;
+  document.getElementById('rmsg').textContent=msg;document.getElementById('rmsg').style.color=col;
+  document.getElementById('rsub').textContent=sub;
+  document.getElementById('rc').textContent=exScore;
+  document.getElementById('rw').textContent=tot-exScore;
+  document.getElementById('rt').textContent=tot;
+  const rb=document.getElementById('btn-review');
+  rb.style.display=exWrong.length?'block':'none';
+  if(exWrong.length)rb.textContent=`📖 راجع الـ ${exWrong.length} سؤال الغلط`;
+  if(pct>=75)confetti();
+  go('sr');
 }
 
 function showReview(){
-  const list=document.getElementById('review-list');
-  list.innerHTML='';
-  document.getElementById('wrong-count-badge').textContent=wrongList.length+' سؤال';
-
-  wrongList.forEach((item,i)=>{
-    const div=document.createElement('div');
-    div.className='review-item';
-    div.style.animationDelay=(i*0.05)+'s';
-    div.innerHTML=`
-      <div class="review-q-num">السؤال رقم ${item.num}</div>
-      <div class="review-q-text">${item.q}</div>
-      <div class="review-row">
-        <span class="review-tag tag-wrong">إجابتك</span>
-        <span class="review-answer-text">${item.chosenLetter}) ${item.chosenText}</span>
-      </div>
-      <div class="review-row">
-        <span class="review-tag tag-correct">الصحيح</span>
-        <span class="review-answer-text">${item.correctLetter}) ${item.correctText}</span>
-      </div>`;
-    list.appendChild(div);
+  const list=document.getElementById('vlist');list.innerHTML='';
+  document.getElementById('vcnt').textContent=exWrong.length+' سؤال';
+  exWrong.forEach((it,i)=>{
+    const d=document.createElement('div');d.className='vitm';d.style.animationDelay=(i*.05)+'s';
+    d.innerHTML=`<div class="vnum">السؤال رقم ${it.n}</div><div class="vqtxt">${it.q}</div>
+    <div class="vrow"><span class="vtag twrong">إجابتك</span><span class="vans">${it.ct}</span></div>
+    <div class="vrow"><span class="vtag tcor">الصحيح</span><span class="vans">${it.at}</span></div>`;
+    list.appendChild(d);
   });
-  showScreen('screen-review');
+  go('sv');
 }
 
-function restartQuiz(){ startQuiz(); }
-
-function launchConfetti(){
-  const colors=['#E8820C','#2D9E5F','#f0a94a','#3ab575','#fff','#ffdd00','#3a8fd4'];
-  for(let i=0;i<65;i++){
+function confetti(){
+  const cols=['#E8820C','#2D9E5F','#f0a94a','#3ab575','#fff','#ffdd00','#3a8fd4'];
+  for(let i=0;i<60;i++){
     setTimeout(()=>{
-      const c=document.createElement('div');
-      c.className='confetti-piece';
-      c.style.left=Math.random()*100+'vw';
-      c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      const c=document.createElement('div');c.className='cpiece';
+      c.style.left=Math.random()*100+'vw';c.style.background=cols[~~(Math.random()*cols.length)];
       c.style.transform=`rotate(${Math.random()*360}deg)`;
-      c.style.animationDuration=(2+Math.random()*2)+'s';
-      c.style.animationDelay=(Math.random()*0.5)+'s';
-      c.style.width=(6+Math.random()*8)+'px';
-      c.style.height=(10+Math.random()*14)+'px';
-      document.body.appendChild(c);
-      setTimeout(()=>c.remove(),4000);
-    },i*38);
+      c.style.animationDuration=(2+Math.random()*2)+'s';c.style.animationDelay=(Math.random()*.4)+'s';
+      c.style.width=(6+Math.random()*8)+'px';c.style.height=(10+Math.random()*14)+'px';
+      document.body.appendChild(c);setTimeout(()=>c.remove(),3500);
+    },i*40);
   }
 }
 </script>
